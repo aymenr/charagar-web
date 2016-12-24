@@ -1,0 +1,11 @@
+
+               <div>Login </div>
+                <div>
+                    <input class="form-control" required ng-model="user.email" placeholder="email"></input>
+                </div>
+                <div>
+                    <input class="form-control" type="password" ng-minlength=5 ng-model="user.password" placeholder="password"></input>
+                </div>
+                <button type="button" class="btn btn-default" ng-click="loginUser()" >Submit</button>
+
+                   <div ng-show="isError" class="error">Incorrect username or password</div>
