@@ -8,16 +8,26 @@
  * Controller of the charagarApp
  */
  angular.module('charagarApp')
- .controller('HeaderCtrl', function ($scope, ngDialog) {
+ .controller('HeaderCtrl', function ($scope, ngDialog,userService) {
 
  	init();
 
  	function init()
  	{
- 		$scope.isLoggedIn = false;
+
 
     }
 
+    $scope.$watch(userService.isLoggedIn, function(isLoggedIn)
+    {
+        console.log("STATUS:" + isLoggedIn);
+        if (isLoggedIn)
+        {
+            $scope.userName = userService.getUserInfo().userName;
+        };
+        $scope.isLoggedIn = isLoggedIn
+
+    });
 
     $scope.openSignup = function()
     {
@@ -32,6 +42,26 @@
 
         });
     }
+    $scope.logoutUser = function()
+    {
+        userService.logoutUser();
+
+    }
+
+
+    $scope.dropdown = [
+
+    {
+        "text": "Logout",
+        "click": "logoutUser()",
+    },
+    {
+        "text": "My Campaigns",
+        "click": "",
+    }
+
+
+    ];
 
 
 });

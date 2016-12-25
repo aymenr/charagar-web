@@ -8,7 +8,7 @@
  * Controller of the charagarApp
  */
  angular.module('charagarApp')
- .controller('UserauthCtrl', function ($scope,userService) {
+ .controller('UserauthCtrl', function ($scope,userService,ngDialog) {
 
  		$scope.isError = false;
 
@@ -18,7 +18,8 @@
             $scope.isError = false;
             userService.loginUser(angular.copy($scope.user)).then(function(data)
                 {
-                	$state.go("/#!");
+                	//$.go("/#!");
+                     $scope.closeThisDialog();
                 	console.log("HO GAYA LOGIN WOW");
                     //$scope.go("/home/dashboard");
                 },

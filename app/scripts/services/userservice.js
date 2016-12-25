@@ -37,22 +37,23 @@ angular.module('charagarApp')
 
             });
         }
-        // this.getUserInfo = function()
-        // {
-        //     return userInfo;
-        // }
-        // this.isLoggedIn = function()
-        // {
-        //     if (userInfo)
-        //         return true;
-        //     else
-        //         return false;
-        // }
-        // this.logoutUser = function()
-        // {
-        //     userInfo = null;
-        //     $cookieStore.remove('userInfo')
-        // }
+        this.getUserInfo = function()
+        {
+            return userInfo;
+        }
+        this.isLoggedIn = function()
+        {
+
+            if (userInfo)
+                return true;
+            else
+                return false;
+        }
+        this.logoutUser = function()
+        {
+            userInfo = null;
+            $cookieStore.remove('userInfo')
+        }
 
 
   });

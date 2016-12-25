@@ -19,15 +19,25 @@
             <ul class="nav navbar-nav">
               <li class="active"><a href="#/">Home</a></li>
               <li><a ng-href="#/about">About</a></li>
-              <li><a ng-href="#/">Contact</a></li>
+              <li><a ng-href="">Contact</a></li>
               <li ><a ng-show="!isLoggedIn" ng-click="openSignup()"> Login </a></li>
 
-        </div>
+              <div class="right" ng-if="isLoggedIn"  ng-click="logoutUser()">
+                <span class="name">{{userName}}</span>
+                <span class="logout">
+                  <span class="glyphicon glyphicon-off"></span>
+                  <span>Logout</span>
+                </span>
+              </div>
 
 
 
-            </ul>
-          </div>
+            </div>
+
+
+
+          </ul>
         </div>
       </div>
     </div>
+  </div>
