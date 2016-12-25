@@ -16,7 +16,8 @@
   'ngRoute',
   'ngSanitize',
   'ngTouch',
-  'ngDialog'
+  'ngDialog',
+  'angular-lodash'
 
   ])
   .config(function ($routeProvider,$locationProvider) {
