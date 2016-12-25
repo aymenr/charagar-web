@@ -18,8 +18,9 @@
 
             <ul class="nav navbar-nav">
               <li class="active"><a href="#/">Home</a></li>
-              <li><a ng-href="#/about">About</a></li>
+              <li><a ng-href="/about">About</a></li>
               <li><a ng-href="">Contact</a></li>
+              <li ><a ng-href="/startCampaign"> Start a campaign </a></li>
               <li ><a ng-show="!isLoggedIn" ng-click="openSignup()"> Login </a></li>
 
               <div class="right" ng-if="isLoggedIn"  ng-click="logoutUser()">
@@ -29,7 +30,6 @@
                   <span>Logout</span>
                 </span>
               </div>
-
 
 
             </div>
