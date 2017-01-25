@@ -27,7 +27,7 @@
        <div ng-include src="'views/header.html'"></div>
 
   <div class="container">
-    <div ng-view=""></div>
+    <div ui-view=""></div>
   </div>
 
   <!--
@@ -61,8 +61,10 @@
        <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
        <script src="bower_components/angular-touch/angular-touch.js"></script>
        <script src="bower_components/ng-dialog/js/ngDialog.js"></script>
-       <script src="bower_components/lodash/dist/lodash.js"></script>
+       <script src="bower_components/lodash/dist/lodash.compat.js"></script>
        <script src="bower_components/angular-lodash/angular-lodash.js"></script>
+       <script src="bower_components/moment/moment.js"></script>
+       <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
        <!-- endbower -->
        <!-- endbuild -->
 
@@ -77,6 +79,8 @@
        <script src="scripts/controllers/master.js"></script>
        <script src="scripts/controllers/startcampaign.js"></script>
        <script src="scripts/services/campaignservice.js"></script>
+       <script src="scripts/directives/campaigndirective.js"></script>
+       <script src="scripts/controllers/detailedcampaign.js"></script>
        <!-- endbuild -->
      </body>
      </html>

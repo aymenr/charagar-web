@@ -1,0 +1,15 @@
+<a ng-href="{{getHref()}}">
+<div  style="width:200px">
+<img src="http://placehold.it/200x200">
+<div style="text-align:center"> {{campaignData.name}} </div>
+
+<div class="progress">
+	<div class="bar" ng-style="{width: percentageRaised}"></div>
+</div>
+
+<div style="text-align:center"> {{campaignData.amountRaised}} Raised Of {{campaignData.goal}} RS </div>
+<div ng-if="live =='true'" style="text-align:right"> {{timeLeft}} Left </div>
+
+</div>
+
+</a>

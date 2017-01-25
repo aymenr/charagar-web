@@ -35,7 +35,7 @@
         {
             template: 'views/userAuth.html',
             controller: 'UserauthCtrl',
-            className: 'ngdialog-theme-default',
+            className: 'ngdialog-theme-default userAuth',
             showClose: true,
             closeByEscape: true,
             closeByDocument: true

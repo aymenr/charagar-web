@@ -30,8 +30,10 @@ module.exports = function(config) {
       'bower_components/angular-sanitize/angular-sanitize.js',
       'bower_components/angular-touch/angular-touch.js',
       'bower_components/ng-dialog/js/ngDialog.js',
-      'bower_components/lodash/lodash.js',
+      'bower_components/lodash/dist/lodash.compat.js',
       'bower_components/angular-lodash/angular-lodash.js',
+      'bower_components/moment/moment.js',
+      'bower_components/angular-ui-router/release/angular-ui-router.js',
       'bower_components/angular-mocks/angular-mocks.js',
       // endbower
       'app/scripts/**/*.js',
