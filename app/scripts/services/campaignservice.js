@@ -11,19 +11,16 @@
  .service('campaignService', function (userService,$http,configConstants) {
  	var apiPrefix = configConstants.apiPrefix;
 
- 	// this.saveCampaign = function(campaign)
- 	// {
- 	// 	var input = {"campaign": campaign};
+ 	this.saveCampaign = function(campaign)
+ 	{
+ 		var input = {"campaign": campaign};
 
- 	// 	_.extend(input, {"userId":userService.getUserInfo()._id});
+ 		return $http.post(apiPrefix + 'saveCampaign/', input).then(function(result)
+ 		{
+ 			console.log("SAVED");
 
- 	// 	console.log("LOOK CAMPAIGNW OW:", input);
- 	// 	return $http.post(apiPrefix + 'saveCampaign/', input).then(function(result)
- 	// 	{
- 	// 		console.log("SAVED");
-
- 	// 	});
- 	// }
+ 		});
+ 	}
 
  	this.getLiveCampaigns = function()
  	{
@@ -46,6 +43,16 @@
  		});
  	}
 
+ 	this.getAllCampaigns = function()
+ 	{
+
+ 		return $http.get(apiPrefix + 'getAllCampaigns').then(function(result)
+ 		{
+
+ 			return result.data
+ 		});
+ 	}
+
  	this.getCampaign = function(campaignId)
  	{
 
@@ -56,5 +63,66 @@
  		});
  	}
 
+ 	this.getZakaatFund = function()
+ 	{
+
+ 		return $http.get(apiPrefix + 'getZakaatFund' ).then(function(result)
+ 		{
+
+ 			return result.data
+ 		});
+ 	}
+
+ 	this.getGeneralFund = function()
+ 	{
+
+ 		return $http.get(apiPrefix + 'getGeneralFund' ).then(function(result)
+ 		{
+
+ 			return result.data
+ 		});
+ 	}
+
+ 	this.getCampaignsForUser = function(userId)
+ 	{
+
+ 		return $http.post(apiPrefix + 'getCampaignsForUser/', userId).then(function(result)
+ 		{
+
+ 			return result.data
+ 		});
+ 	}
+
+
+ 	this.getContributionsForUser = function(userId)
+ 	{
+
+ 		return $http.post(apiPrefix + 'getContributionsForUser/', userId).then(function(result)
+ 		{
+
+ 			return result.data
+ 		});
+ 	}
+
+ 	this.getCampaignsByCategory = function(category)
+ 	{
+
+ 		return $http.post(apiPrefix + 'getCampaignsByCategory/',category ).then(function(result)
+ 		{
+
+ 			return result.data
+ 		});
+ 	}
+
+
+ 	this.editCampaign = function(input)
+ 	{
+
+ 		return $http.post(apiPrefix + 'editCampaign/', input).then(function(result)
+ 		{
+
+ 			return result.data
+ 		});
+ 	}
 
  });

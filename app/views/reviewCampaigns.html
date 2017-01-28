@@ -1,0 +1,11 @@
+
+  <h3>All Campaigns</h3>
+  <div class="row">
+
+  <div ng-repeat="campaign in campaigns">
+    <div class="col-sm-3">
+    <campaign-directive data="campaign" > </campaign-directive>
+    <a ng-href="{{getHref(campaign)}}" >	<button  class="btn btn-sm btn-success" role="button">Permissions</button> </a>
+    </div>
+  </div>
+</div>

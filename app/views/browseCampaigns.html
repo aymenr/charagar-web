@@ -1,0 +1,11 @@
+  <h3>All Campaigns</h3>
+  <select class="form-control" required ng-change="categoryChanged()" ng-options="item for item in categories" ng-model="selectedCategory" ></select>
+&nbsp;
+  <div class="row">
+
+  <div ng-repeat="campaign in campaigns">
+    <div class="col-sm-3">
+    <campaign-directive data="campa	ign" > </campaign-directive>
+    </div>
+  </div>
+</div>

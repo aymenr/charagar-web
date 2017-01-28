@@ -14,10 +14,11 @@
       </div>
       <div class="collapse navbar-collapse" id="myNavbar">
         <ul class="nav navbar-nav">
-         <li><a href="#">View Causes</a></li>
+         <li><a href="#!/browseCampaigns">View Causes</a></li>
          <li><a href="#!/startCampaign">Launch a Campaign</a></li>
-         <li><a href="#">Donate to General Fund</a></li>
-         <li><a href="/#!/about">How it Works</a></li>
+         <li><a href="#!/general">Donate to General Fund</a></li>
+         <li ng-if="accessLevel==10"><a href="#!/reviewCampaigns">Review Campaigns</a></li>
+         <li><a href="#!/about">How it Works</a></li>
        </ul>
        <ul class="nav navbar-nav navbar-right">
         <li ng-if="!isLoggedIn" ng-click="openSignup()"><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
@@ -27,8 +28,8 @@
           <a class="dropdown-toFliggle" data-toggle="dropdown" href="#">{{userName}}
             <span class="caret"></span></a>
             <ul class="dropdown-menu">
-              <li><a href="#">My Campaigns</a></li>
-              <li><a href="#">My Contributions</a></li>
+              <li><a href="#!/myCampaigns">My Campaigns</a></li>
+              <li><a href="#!/myContributions">My Contributions</a></li>
               <li ng-click="logoutUser()"><a href="#">Logout </a>
               </ul>
             </li>

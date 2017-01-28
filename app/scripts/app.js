@@ -18,7 +18,9 @@
   'ngTouch',
   'ngDialog',
   'angular-lodash',
-  'ui.router'
+  'ui.router',
+  'ngFileUpload',
+  'ngImgur'
 
   ])
  .config(function($stateProvider, $urlRouterProvider, $httpProvider)
@@ -46,6 +48,48 @@
     url:"/campaign/:campaignId",
     templateUrl:"views/detailedCampaign.html",
     controller: "DetailedcampaignCtrl"
+  }).state('general',
+  {
+    url:"/general",
+    templateUrl:"views/general.html",
+    controller: "GeneralCtrl"
+  }).state('generalZakaatFund',
+  {
+    url:"/generalZakaatFund",
+    templateUrl:"views/zakaatFund.html",
+    controller: "ZakaatfundCtrl"
+  }).state('generalFund',
+  {
+    url:"/generalFund",
+    templateUrl:"views/generalFund.html",
+    controller: "GeneralfundCtrl"
+  }).state('myContributions',
+  {
+    url:"/myContributions",
+    templateUrl:"views/myContributions.html",
+    controller: "MycontributionsCtrl"
+  }).state('myCampaigns',
+  {
+    url:"/myCampaigns",
+    templateUrl:"views/myCampaigns.html",
+    controller: "MycampaignsCtrl"
+  }).state('editCampaign',
+  {
+    url:"/editCampaign/:campaignId",
+    templateUrl:"views/editCampaign.html",
+    controller: "EditcampaignCtrl"
+  }).state('reviewCampaigns',
+  {
+    url:"/reviewCampaigns",
+    templateUrl:"views/reviewCampaigns.html",
+    controller: "ReviewcampaignsCtrl"
+  }).state('browseCampaigns',
+  {
+    url:"/browseCampaigns",
+    templateUrl:"views/browseCampaigns.html",
+    controller: "BrowsecampaignsCtrl"
   })
+
+
 
 })

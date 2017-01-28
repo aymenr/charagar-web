@@ -1,4 +1,4 @@
-<!-- <form disabled name="signup_form" > -->
+<form disabled name="signup_form" >
 <div>
 	<h3>Start your own campaign</h3>
 </div>
@@ -92,27 +92,11 @@
 
 
 
-&nbsp;
-<div class="row">
-	<div class="col-sm-4">
-		<div> <h4> Upload Image</h4></div>
-		<div> Upload Image </div>
-	</div>
-	<div class="col-sm-8">
+    <button  style="margin-top:30px;float: right;" class="btn btn-lg btn-success" ng-click="editCampaign()" role="button">SAVE </button>
 
-   <button ngf-select="onImageSelect($files,'campaignImages')" accept="image/*"> Select Picture</button>
-	<div class="restrictImageSize">
-  <img data-ng-src="{{uploadImages.campaignImageFile}}" />
-	</div>
-	</div>
-</div>
-	<h4>{{saveStatus}}<h5>
+</form>
 
-    <button ng-disabled="isSaveDisabled()" style="margin-top:30px;float: right;" class="btn btn-lg btn-success" ng-click="saveCampaign()" role="button">Submit For approval</button>
 
-<!-- </form>
-
- -->
 <!-- // ng-minlength="2" //
 ADD CATEGORYYYYYY
 \

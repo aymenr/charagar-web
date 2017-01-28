@@ -14,7 +14,7 @@
 
  	function init()
  	{
-
+        $scope.accessLevel=0;
 
     }
 
@@ -24,6 +24,8 @@
         if (isLoggedIn)
         {
             $scope.userName = userService.getUserInfo().userName;
+            $scope.accessLevel = userService.getUserInfo().accessLevel;
+            console.log("ACCESS:",$scope.accessLevel);
         };
         $scope.isLoggedIn = isLoggedIn
 

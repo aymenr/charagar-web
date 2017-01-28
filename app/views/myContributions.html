@@ -1,0 +1,24 @@
+
+<h3>My Contributions</h3>
+<div class="row">
+
+	<div ng-repeat="campaign in campaigns">
+		<div class="col-sm-3">
+
+		<a ng-href="{{getHref(campaign)}}">
+				<div  style="width:200px">
+					<img src="http://placehold.it/200x200">
+					<div style="text-align:center"> {{campaign.name}} </div>
+
+
+					<div style="text-align:center"> {{campaign.contribution.amount}}  Rs Donated </div>
+
+				</div>
+
+			</a>
+
+
+
+		</div>
+	</div>
+</div>
