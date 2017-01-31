@@ -20,11 +20,44 @@
   'angular-lodash',
   'ui.router',
   'ngFileUpload',
-  'ngImgur'
+  'ngImgur',
+  'ng.httpLoader'
 
   ])
- .config(function($stateProvider, $urlRouterProvider, $httpProvider)
+
+ .run(function(userService,$rootScope)
+{
+
+    function checkLoggedInStatus()
+    {
+        if (userService.doesTokenExist())
+        {
+            userService.verifyToken().then(function(data)
+                {
+                    console.log("verified token");
+                },
+                function(errorMessage)
+                {
+                    console.log("token not authorized");
+                })
+        }
+    }
+
+    $rootScope.$on('$stateChangeStart', function(e, to)
+    {
+        //console.log("APP JS STATUS:",userService.isLoggedIn());
+      if (!userService.isLoggedIn())
+      {
+
+        checkLoggedInStatus();
+      }
+
+    });
+})
+ .config(function($stateProvider, $urlRouterProvider, $httpProvider,httpMethodInterceptorProvider)
  {
+    httpMethodInterceptorProvider.whitelistDomain('api.imgur.com');
+   $httpProvider.interceptors.push('authInterceptor');
    $urlRouterProvider.otherwise("/home");
 
    $stateProvider

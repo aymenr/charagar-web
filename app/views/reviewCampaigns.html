@@ -1,11 +1,14 @@
+<div class="review-campaigns">
+	<h2 class="text-center">All Campaigns</h2>
 
-  <h3>All Campaigns</h3>
-  <div class="row">
+	<div class="row">
+		<div ng-repeat="campaign in campaigns" >
+			<div class="clearfix" ng-if="$index % 4 == 0"></div>
+			<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 campaign-container">
 
-  <div ng-repeat="campaign in campaigns">
-    <div class="col-sm-3">
-    <campaign-directive data="campaign" > </campaign-directive>
-    <a ng-href="{{getHref(campaign)}}" >	<button  class="btn btn-sm btn-success" role="button">Permissions</button> </a>
-    </div>
-  </div>
+				<campaign-directive data="campaign" admin="true" > </campaign-directive>
+
+			</div>
+		</div>
+	</div>
 </div>

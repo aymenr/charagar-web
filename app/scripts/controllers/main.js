@@ -18,6 +18,7 @@
     campaignService.getLiveCampaigns()
     .then(function(result) {
       $scope.liveCampaigns = result;
+
     })
 
     campaignService.getPastCampaigns()

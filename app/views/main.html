@@ -14,8 +14,6 @@
         <img src="http://placehold.it/1366x400" alt="Chania">
         <div class="container">
           <div class="carousel-caption">
-
-            <p><a class="btn btn-lg btn-success" href="#" role="button">Donate</a></p>
           </div>
         </div>
       </div>
@@ -44,27 +42,29 @@
     </a>
   </div>
 
-  <h3>Live Campaigns</h3>
+
+  <h2 class="text-center">Live Campaigns</h2>
+
+
+
   <div class="row">
+   <div ng-repeat="campaign in liveCampaigns" >
+     <div class="clearfix" ng-if="$index % 4 == 0"></div>
+     <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 campaign-container">
 
-  <div ng-repeat="campaign in liveCampaigns">
-    <div class="col-sm-3">
-    <campaign-directive data="campaign"  live="true"> </campaign-directive>
-    </div>
-  </div>
-</div>
+       <campaign-directive data="campaign"  live="true"> </campaign-directive>
+     </div>
+   </div>
+ </div>
 
+ <h2 class="text-center">Past Campaigns</h2>
 
+ <div class="row">
+   <div ng-repeat="campaign in pastCampaigns" >
+     <div class="clearfix" ng-if="$index % 4 == 0"></div>
+     <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 campaign-container">
 
-<div ng-if="pastCampaigns.length!=0">
-  <h3>Past Campaigns</h3>
-  <div class="row">
-
-  <div ng-repeat="campaign in pastCampaigns">
-    <div class="col-sm-3">
-    <campaign-directive data="campaign" live ="false" > </campaign-directive>
-    </div>
-  </div>
-</div>
-
-</div>
+       <campaign-directive data="campaign"  live="false"> </campaign-directive>
+     </div>
+   </div>
+ </div>

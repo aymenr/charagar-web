@@ -10,70 +10,71 @@
  angular.module('charagarApp')
  .controller('UserauthCtrl', function ($scope,userService,ngDialog) {
 
+   $scope.isError = false;
+   $scope.state = {};
+   $scope.user = {};
+
+
+   $scope.loginUser = function()
+   {
      $scope.isError = false;
-     $scope.state = "login";
-     $scope.loginUser = function()
+     $scope.state.isLoading = true;
+
+     userService.loginUser(angular.copy($scope.user)).then(function(data)
      {
-       console.log("LOGIN USER,", $scope.user);
-       $scope.isError = false;
-       $scope.user.password = hashPassword($scope.user.password);
-       userService.loginUser(angular.copy($scope.user)).then(function(data)
-       {
-                	//$.go("/#!");
-                   $scope.closeThisDialog();
-                   console.log("HO GAYA LOGIN WOW");
-                    //$scope.go("/home/dashboard");
-                },
-                function(errorMessage)
-                {
-                    $scope.isError = true;
-                });
+       $scope.closeThisDialog();
+       $scope.state.isLoading = false;
+     },
+     function(result)
+     {
+      $scope.isError = true;
+      console.log("ERROR:",result)
+      $scope.state.isLoading = false;
+      $scope.state.errorMsg = result.data.error_body;
+    });
    }
 
 
    $scope.switchView = function(isSignup)
    {
-    if(isSignup) {
-        console.log("switch to signup");
-        $scope.state ="signup";
-    } else {
-        $scope.state="login";
-    }
-}
+      resetData(isSignup);
+  }
 
-$scope.signupUser = function(type)
-{
-    console.log("Going to sign up");
+  $scope.signupUser = function(type)
+  {
+
     $scope.isError = false;
-    var udata = angular.copy($scope.user);
-
-    udata.password = hashPassword(udata.password);
-    console.log("udata:",udata);
-    console.log("scope copy:,", angular.copy($scope.user) );
-    userService.signupUser(udata).then(function(data)
+    $scope.isLoading = true;
+    userService.signupUser(angular.copy($scope.user)).then(function(data)
     {
-        console.log("SIGNUPED");
-        $scope.closeThisDialog();
-        console.log("HO GAYA signup");
-                    //$scope.go("/home/dashboard");
-                },
-                function(errorMessage)
-                {
-                    $scope.isError = true;
-                });
+      $scope.isLoading = false;
+      $scope.closeThisDialog();
+
+    },
+    function(result)
+    {
+      $scope.state.isLoading = false;
+      $scope.state.errorMsg = result.data.error_body;
+      $scope.isError = true;
+    });
 
 
-};
+  }
 
+  function resetData(isSignup)
+  {
+    $scope.state = {
+      isSignup: isSignup,
+      errorMsg: "",
+      isSubmitting: false,
+      isLoading: false
+    };
+    $scope.userData = {
+      username: "",
+      email: "",
+      password: ""
+    };
 
-function hashPassword(password)
-{
-    return md5(password);
-}
-
-
-
-
-
+  }
 
 })

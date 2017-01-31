@@ -1,11 +1,13 @@
 
-  <h3>My Campaigns</h3>
-  <div class="row">
+	<h2 class="text-center">My Campaigns</h2>
 
-  <div ng-repeat="campaign in campaigns">
-    <div class="col-sm-3">
-    <campaign-directive data="campaign"> </campaign-directive>
+	<div class="row">
+		<div ng-repeat="campaign in campaigns" >
+			<div class="clearfix" ng-if="$index % 4 == 0"></div>
+			<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 campaign-container">
 
-    </div>
-  </div>
-</div>
+				<campaign-directive data="campaign"> </campaign-directive>
+
+			</div>
+		</div>
+	</div>

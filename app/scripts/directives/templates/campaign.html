@@ -1,15 +1,28 @@
-<a ng-href="{{getHref()}}">
-<div  style="width:200px">
-<img src="http://placehold.it/200x200">
-<div style="text-align:center"> {{campaignData.name}} </div>
+	<div class="campaign">
+		<a ng-href="{{getHref()}}">
+			<img src="http://placehold.it/250x250">
+			<div class="baseFont center-text campaign-text"> {{campaignData.name}} </div>
+			<div class="progress">
+				<div class="bar" ng-style="{width: percentageRaised}"></div>
+			</div>
+			<div class ="baseFont center-text campaign-text"> {{campaignData.amountRaised}} Raised Of {{campaignData.goal}} Rs </div>
+			<div class ="baseFont center-text campaign-text"  > {{timeLeft}} </div>
 
-<div class="progress">
-	<div class="bar" ng-style="{width: percentageRaised}"></div>
+
+		</a>
+
+		<a  ng-if="admin" ng-href="{{getEditHref()}}">
+		<button  class="btn btn-lg btn-success permissions" role="button">Edit and Approve</button>
+		</a>
+	</div>
 </div>
 
-<div style="text-align:center"> {{campaignData.amountRaised}} Raised Of {{campaignData.goal}} RS </div>
-<div ng-if="live =='true'" style="text-align:right"> {{timeLeft}} Left </div>
 
-</div>
 
-</a>
+
+
+
+
+
+
+

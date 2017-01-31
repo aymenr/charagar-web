@@ -10,22 +10,19 @@
  angular.module('charagarApp')
  .controller('HeaderCtrl', function ($scope, ngDialog,userService) {
 
- 	init();
+    function init() {
 
- 	function init()
- 	{
-        $scope.accessLevel=0;
-
+        $scope.isLoggedIn = userService.isLoggedIn();
+        $scope.userData = userService.getUserInfo();
+        console.log("userdata:",$scope.userData);
     }
 
     $scope.$watch(userService.isLoggedIn, function(isLoggedIn)
     {
-        console.log("STATUS:" + isLoggedIn);
         if (isLoggedIn)
         {
-            $scope.userName = userService.getUserInfo().userName;
-            $scope.accessLevel = userService.getUserInfo().accessLevel;
-            console.log("ACCESS:",$scope.accessLevel);
+            $scope.userData = userService.getUserInfo();
+
         };
         $scope.isLoggedIn = isLoggedIn
 
@@ -44,12 +41,11 @@
 
         });
     }
+
     $scope.logoutUser = function()
     {
         userService.logoutUser();
-
     }
-
 
     $scope.dropdown = [
 
@@ -65,5 +61,6 @@
 
     ];
 
+    init();
 
 });

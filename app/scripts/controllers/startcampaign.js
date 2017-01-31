@@ -13,8 +13,9 @@
  	function init() {
  		$scope.campaign = {
  			"creator":"",
- 			"isApproved":"",
-
+ 			"isApproved":false,
+ 			"isZakaat":false,
+ 			"type": "Individual"
  		}
 
  		$scope.campaignTypes = ["Individual", "Cause"]
@@ -23,7 +24,7 @@
  			campaignImageFile: null,
  			campaignImagePath: ""
  		}
-
+ 		restrictDateInput();
  		$scope.saveStatus="";
  	}
 
@@ -55,8 +56,8 @@
 
  	$scope.saveCampaign = function() {
 
-
- 		$scope.campaign.creator = userService.getUserInfo()._id;
+ 		console.log("XXXXXXXXXX:",userService.getUserInfo());
+ 		$scope.campaign.creator = userService.getUserInfo().userId;
  		$scope.campaign.isApproved = false;
 
  		uploadImage().then(function(imageUrl) {
@@ -97,12 +98,20 @@
 
 
 
- 	// $scope.isSaveDisabled = function () {
- 	// 	if ($scope.signup_form.$invalid)
- 	// 	{
- 	// 		return true;
- 	// 	}
- 	// }
+ 	$scope.isSaveDisabled = function () {
+
+ 		if(!$scope.uploadImages.campaignImageFile) {
+ 			return true;
+ 		}
+
+ 		if(	$scope.saveStatus=="Uploading...") {
+ 			return true;
+ 		}
+ 		if ($scope.signup_form.$invalid)
+ 		{
+ 			return true;
+ 		}
+ 	}
 
 
 
@@ -137,6 +146,28 @@
 
  	}
 
- 	init();
- });
+ 	function restrictDateInput() {
+ 		var today = new Date();
+ 		var dd = today.getDate();
+		var mm = today.getMonth()+1; //January is 0!
+		var yyyy = today.getFullYear();
+		if(dd<10){
+			dd='0'+dd
+		}
+
+		if(mm<10){
+			mm='0'+mm
+		}
+
+		today = yyyy+'-'+mm+'-'+dd;
+
+		document.getElementById("startdatefield").setAttribute("min", today);
+
+
+		document.getElementById("enddatefield").setAttribute("min", today);
+
+	}
+
+init();
+});
 

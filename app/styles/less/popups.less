@@ -1,0 +1,623 @@
+@elementColor:#e6e6e6;
+@dividerColor:#dcdcdc;
+
+.popups
+{
+
+	.msgPrompt
+	{
+		font-size: 13px;
+		color:@themeColor2;
+		.fontRegular();
+		height: 20px;
+
+		&.success
+		{
+			color: @themeColor;
+		}
+	}
+
+	img
+	{
+		border-top-left-radius:3px;
+		border-top-right-radius:3px;
+	}
+
+	.formrow
+		{
+			font-size: 15px;
+			span
+			{
+				position: absolute;
+				left: 20px;
+				margin-top: 8px;
+				font-size: 15px;
+				color: darken(@elementColor,2%)
+			}
+		}
+		input
+		{
+			background-color:#fff;
+			border: none;
+			border-bottom:1px solid @elementColor;
+			height: 35px;
+			padding: 3px;
+			padding-left: 40px;
+			padding-bottom: 8px;
+			width: 100%;
+			color: darken(@elementColor,60%);
+			.fontLight();
+			margin-bottom: 5px;
+		}
+
+
+h4
+	{
+		color: #fff;
+		.fontAlternate();
+		position: absolute;
+		top:45px;
+		left: 20px;
+		color:#fff;
+		background-color: rgba(0,0,0,0.8);
+		padding: 4px;
+		padding-bottom: 0px;
+
+	}
+	.or
+	{
+		color: @fontColor2;
+		margin-top: 25px;
+		font-size: 14px;
+		border-top: 1px dashed @dividerColor;
+		div
+		{
+			top: -14px;
+			position: relative;
+			background-color: #fff;
+			border-radius: 6px;
+			padding-left: 10px;
+			padding-right: 10px;
+			display: inline-block;
+		}
+	}
+
+	.forgot
+	{
+		.fontRegular();
+		font-size: 13px;
+		padding-top: 10px;
+		color: @fontColor;
+		display: block;
+	}
+	.loginMsg
+	{
+		font-size: 13px;
+		margin-top: 5px;
+		padding-left: 10px;
+		padding-right: 10px;
+		color: @fontColor;
+		line-height: 17px;
+		a
+		{
+			color: @themeColor;
+		}
+		@media (max-width: 768px)
+		{
+
+			.fontRegular();
+			color: #7a7a7a;
+			font-size: 14px;
+			line-height: 19px;
+			.desktopInviteMessage
+			{
+				display: none;
+			}
+		}
+	}
+
+	button
+	{
+		margin-top: 5px;
+		margin-bottom: 5px;
+		&.normal
+		{
+			margin-top: 15px;
+		}
+	}
+	.inputForm
+	{
+		padding-left: 10px;
+		padding-right: 10px;
+		width: 100%;
+		margin-top: 30px;
+
+	}
+	.imgZoom
+	{
+	width: 300px;
+	height: 300px;
+	border-radius:3px;
+	margin-bottom: -11px;
+	}
+
+	&.passwordPopup
+	{
+		button
+		{
+			margin-top: 30px;
+		}
+		.error
+		{
+			//margin-top: -5px;
+		}
+		.msg
+		{
+			.fontLight();
+			font-size: 14px;
+			color: @fontColor;
+			line-height: 19px;
+			margin-bottom: 15px;
+
+		}
+	}
+
+	&.sharePhoto
+	{
+		.holder
+		{
+			padding: 10px;
+			padding-bottom: 10px;
+			background-color: #fff;
+			border-top-left-radius:3px;
+			border-top-right-radius:3px;
+			border-bottom: 1px dashed @fontColor;
+			.kitty
+			{
+				width: 205px;
+				height: 225px;
+				margin: 0px auto;
+				position: relative;
+				margin-top: -60px;
+				img
+				{
+					width: 100%;
+					height: 100%;
+					margin: 0px auto;
+					margin-right: -25px;
+				}
+
+
+			}
+
+		}
+		&.campaign
+		{
+			.kitty
+			{
+				width: 185px;
+				height: 180px;
+				margin-top: -10px;
+				margin-left: 30px;
+			}
+		}
+
+		h3
+		{
+			font-size: 16px;
+			margin-top: 20px;
+			.fontLight();
+		}
+		.text
+		{	color: @fontColor;
+			line-height: 18px;
+			padding: 10px;
+			padding-left: 20px;
+			padding-right: 20px;
+			padding-top: 15px;
+			font-size: 14px;
+			.fontLight();
+
+		}
+
+		button
+		{
+		&.fb
+				{
+					background-color: @fbColor;
+					margin-bottom: 10px;
+				}
+				&.twitter
+				{
+					background-color: @twitterColor;
+					margin-bottom: -20px;
+				}
+			}
+
+		.content
+		{
+			padding: 10px;
+			padding-left: 20px;
+			padding-right: 20px;
+		}
+	}
+
+	&.appsPopup
+	{
+
+		.content
+		{
+			display: inline-block;
+		}
+
+		.ios
+		{
+			padding: 5px 10px;
+			padding-right: 5px;
+			img
+			{
+				margin-top: 52px;
+			}
+		}
+
+		.android
+		{
+			padding: 5px 10px;
+			padding-left: 5px;
+		}
+
+		img
+		{
+			width: 100%;
+			margin: 10px 0;
+		}
+
+		.button
+		{
+			width: 100%;
+			display: inline-block;
+			text-decoration: none;
+			padding: 3px;
+			height: auto;
+			font-size: 14px;
+
+			&:hover,
+			&:focus
+			{
+				text-decoration: none;
+				color: #fff;
+			}
+		}
+	}
+
+	&.share
+	{
+		img
+		{
+			width: 100%;
+		}
+
+		h4
+		{
+			top: 60px;
+		}
+
+		.share-states
+		{
+			font-family: 'gothic';
+    		position: absolute;
+    		top: 67px;
+    		// left: 20px;
+    		padding: 0 20px;
+			font-weight: bold;
+			font-size: 18px;
+			text-align: left;
+
+			.item
+			{
+				cursor: pointer;
+				text-align: left;
+				color: #fff;
+				background-color: rgba(0, 0, 0, 0.8);
+				padding: 5px;
+				padding-bottom: 0px;
+				text-transform: capitalize;
+				display: inline-block;
+				margin-left: -5px;
+				margin-right: 12px;
+
+				&.active
+				{
+					span
+					{
+						border-bottom: 2px solid @themeColor;
+					}
+				}
+			}
+		}
+
+		.widget-embed
+		{
+			width: 100%;
+			height: 100%;
+			margin: 15px 0;
+		}
+
+		.content
+		{
+			display: inline-block;
+			width: 100%;
+
+			&.embedded-widget
+			{
+				.formrow
+				{
+					margin-top: 10px;
+				}
+			}
+
+			.sub-title
+			{
+				font-size: 16px;
+				color: inherit;
+				font-weight: bold;
+				font-family: 'latoLight';
+				text-align: left;
+				padding: 10px 20px 0;
+			}
+
+			.panel
+			{
+					width: 100%;
+					height: 150px;
+					position: relative;
+
+					//background: url("../images/content/papu-blur.png") no-repeat;
+					//background-size:cover;
+					padding: 0px;
+					margin: 0px;
+					border: none;
+					border-radius: 0px;
+					border-bottom: 1px dashed @fontColor;
+				.info
+				{
+					text-align: left;
+					position: relative;
+					  top: 50%;
+					  transform: translateY(-50%);
+					padding-left: 20px;
+					white-space: nowrap;
+					width: 100%;
+
+
+					& > div
+					{
+						display: inline-block;
+						vertical-align: middle;
+					}
+
+					.thumb
+					{
+						width: 80px;
+						height: 80px;
+						border-radius:60px;
+						margin-right: 10px;
+					}
+					.labels h3:nth-child(2)
+					{
+						color: @themeColor3;
+					}
+
+					.labels h3
+					{
+						text-align: left;
+						font-size: 16px;
+						margin-bottom: 7px;
+						color: @themeColor;
+						white-space: normal;
+						padding-right: 110px;
+						@media (max-width: 768px)
+						{
+							.mobileFont();
+						}
+					}
+
+
+
+				}
+			}
+			.formrow
+			{
+				padding-left: 20px;
+				padding-right: 20px;
+				margin-top: 25px;
+				span
+				{
+					color: @themeColor3;
+				}
+				input
+				{
+					padding-left: 25px;
+					// padding : 15px;
+				}
+			}
+
+			button
+			{
+				width: 90%;
+				margin-top: 25px;
+				&.fb
+				{
+					background-color: @fbColor;
+					margin-bottom: -5px;
+				}
+				&.twitter
+				{
+					background-color: @twitterColor;
+				}
+			}
+			.thumbPhotpShare
+			{
+						width: 80px;
+						height: 80px;
+						border-radius:60px;
+						margin-right: 10px;
+			}
+			.playlistDelPopup
+			{
+			display:inline-block;
+			.fontRegular();
+			font-size: 16px;
+			color: @fontColor;
+			margin-top: 20px;
+			margin-bottom: -15px;
+			margin-left: 25px;
+			margin-right: 25px;
+
+
+			button
+			{
+			}
+
+			}
+		}
+	}
+
+	&.info-popup
+	{
+		.content
+		{
+			padding: 15px 10px 10px;
+			font-family: "latoLight";
+			display: inline-block;
+		}
+	}
+
+	&.confirm-popup
+	{
+		button
+		{
+			font-size: 15px;
+		}
+	}
+
+	&.downloadapps
+	{
+		.msg
+		{
+			padding: 10px 0;
+			font-family: "latoLight"
+		}
+
+		a {
+			img
+			{
+				width: 130px;
+			}
+
+			&.android-badge
+			{
+				img
+				{
+					height: 40px;
+				}
+			}
+		}
+	}
+
+}
+
+.announce
+	{
+		//width: 80%;
+		.ngdialog-content{
+			width: 70% !important;
+		}
+		.ngdialog-close
+		{
+			top:190px !important;
+			left: 83% !important;
+			right:auto !important;
+
+		}
+
+		.announceContainer
+		{
+			padding: 20px;
+			padding-top: 10px;
+
+			.accounceHead
+			{
+					 //display: table;
+    				//margin: 0 auto;
+
+				img,.aHead
+				{
+					display: inline-block;
+					vertical-align: middle;
+				}
+				.aHead
+				{
+					text-align: left;
+					margin-top: -5px;
+					padding-left: 5px;
+					div
+					{
+						font-size: 14px;
+						//color: @themeColor2;
+					}
+						div:nth-child(2)
+					{
+						font-size: 17px;
+						color: @themeColor;
+
+					}
+					.fontLight() !important;
+
+				}
+				//border-bottom: 1px dashed @fontColor;
+									padding-bottom: 10px;
+			}
+			img
+			{
+				width: 100px;
+				height: 100px;
+			}
+			a
+			{
+				color: @themeColor;
+			}
+			p
+			{
+				font-size: 14px;
+				color: @fontColor;
+				line-height: 18px;
+				padding-top: 10px;
+			}
+		}
+
+		@media (max-width: 768px)
+		{
+			.ngdialog-content
+			{
+				width: 90% !important;
+			}
+			.announceContainer .accounceHead
+			{
+					text-align: center !important;
+				*
+				{
+					display: block;
+
+				}
+				img
+				{
+					margin-bottom: 10px;
+				}
+				.aHead
+				{
+					text-align: center;
+				}
+			}
+		}
+	}

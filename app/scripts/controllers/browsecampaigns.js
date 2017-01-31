@@ -10,8 +10,8 @@
  angular.module('charagarApp')
  .controller('BrowsecampaignsCtrl', function (campaignService,$scope) {
 
- 	$scope.categories = ["health", "education","all"]
- 	$scope.selectedCategory ="all";
+ 	$scope.categories = ["Health", "Education","All"]
+ 	$scope.selectedCategory ="All";
 
  	function init()
  	{
@@ -24,8 +24,13 @@
 
  	init()
  	$scope.categoryChanged=function(){
- 		console.log("CHANGE");
-		campaignService.getCampaignsByCategory({"category":$scope.selectedCategory})
+
+ 		var query ={};
+ 		if($scope.selectedCategory!="All") {
+ 			query = {"category": $scope.selectedCategory};
+ 		}
+
+		campaignService.getCampaignsByCategory(query)
  		.then(function(result) {
  			$scope.campaigns = result;
  		})

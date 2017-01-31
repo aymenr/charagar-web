@@ -1,21 +1,41 @@
-.progress {
-  position: relative;
-  height: 4px;
-  display: block;
-  width: 100%;
-  background-color: #acece6;
-  border-radius: 2px;
-  background-clip: padding-box;
-  margin: 0.5rem 0 1rem 0;
-  overflow: hidden;
+.campaign {
 
-  .bar {
-    position: absolute;
-    background-color: inherit;
-    top: 0;
-    bottom: 0;
-    background-color: #26a69a;
-    transition: width .3s linear; }
+  width: 250px;
+  float: none;
+  margin: 0 auto;
+  margin-bottom: 45px;
+  .progress {
+    position: relative;
+    height: 10px;
+    display: block;
+    width: 90%;
+    background-color: #daffde;
+    border-radius: 2px;
+    background-clip: padding-box;
+    margin: auto;
+    margin-top: 10px;
+    overflow: hidden;
 
+    .bar {
+      position: absolute;
+      background-color: inherit;
+      top: 0;
+      bottom: 0;
+      background-color: @themeColor;
+      transition: width .3s linear; }
+    }
 
+.campaign-text {
+  margin: 5px;
 }
+
+.permissions {
+  padding: 0px;
+  width: 90%;
+  display: block;
+  margin: auto;
+  height: 30px;
+}
+
+
+  }

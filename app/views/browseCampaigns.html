@@ -1,11 +1,17 @@
-  <h3>All Campaigns</h3>
-  <select class="form-control" required ng-change="categoryChanged()" ng-options="item for item in categories" ng-model="selectedCategory" ></select>
-&nbsp;
-  <div class="row">
+  <div class="browse-campaigns">
+    <h2 class="text-center">All Campaigns</h2>
 
-  <div ng-repeat="campaign in campaigns">
-    <div class="col-sm-3">
-    <campaign-directive data="campa	ign" > </campaign-directive>
+    <select class="form-control selector" required ng-change="categoryChanged()" ng-options="item for item in categories" ng-model="selectedCategory" ></select>
+
+    <div class="row">
+      <div ng-repeat="campaign in campaigns" >
+       <div class="clearfix" ng-if="$index % 4 == 0"></div>
+       <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 campaign-container">
+
+        <campaign-directive data="campaign" > </campaign-directive>
+      </div>
     </div>
   </div>
+
+  <div ng-if="campaigns.length==0" class="no-result">No campaigns in the selected category found. </div>
 </div>

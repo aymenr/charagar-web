@@ -13,7 +13,9 @@
 
  	function init()
  	{
- 		if(userService.getUserInfo().accessLevel ==10) {
+
+ 		if(userService.getUserInfo().accessLevel =="admin") {
+
  			campaignService.getAllCampaigns()
  			.then(function(result) {
  				$scope.campaigns = result;
@@ -23,9 +25,6 @@
  		}
 
  	}
- 	$scope.getHref = function(campaign) {
- 		console.log("#!/editCampaign/"+ campaign._id)
- 		return ("#!/editCampaign/" + campaign._id);
- 	}
+
  	init()
  });

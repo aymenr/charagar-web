@@ -10,14 +10,15 @@
  angular.module('charagarApp')
  .service('campaignService', function (userService,$http,configConstants) {
  	var apiPrefix = configConstants.apiPrefix;
+ 	var authorizedApiPrefix = configConstants.authorizedApiPrefix;
 
  	this.saveCampaign = function(campaign)
  	{
  		var input = {"campaign": campaign};
 
- 		return $http.post(apiPrefix + 'saveCampaign/', input).then(function(result)
+ 		return $http.post(authorizedApiPrefix + 'saveCampaign/', input).then(function(result)
  		{
- 			console.log("SAVED");
+
 
  		});
  	}
@@ -86,7 +87,7 @@
  	this.getCampaignsForUser = function(userId)
  	{
 
- 		return $http.post(apiPrefix + 'getCampaignsForUser/', userId).then(function(result)
+ 		return $http.post(authorizedApiPrefix + 'getCampaignsForUser', userId).then(function(result)
  		{
 
  			return result.data
@@ -97,7 +98,7 @@
  	this.getContributionsForUser = function(userId)
  	{
 
- 		return $http.post(apiPrefix + 'getContributionsForUser/', userId).then(function(result)
+ 		return $http.post(authorizedApiPrefix + 'getContributionsForUser/', userId).then(function(result)
  		{
 
  			return result.data

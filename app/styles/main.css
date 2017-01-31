@@ -1,12 +1,31 @@
-.spin {
-  width: 50px;
-  height: 25px;
+.userAuth {
   text-align: center;
-  font-size: 10px;
-  display: inline-block;
+  padding-top: 20px;
 }
-.home-page h3 {
-  text-align: center;
+.userAuth.ngdialog.ngdialog-theme-default .ngdialog-content {
+  padding: 0px;
+  background-color: #fff;
+  width: 300px;
+  padding-bottom: 11px;
+}
+.userAuth .bottom {
+  color: black;
+  font-size: 12px;
+  margin-top: 10px;
+  cursor: pointer;
+  font-family: 'latoRegular';
+}
+.userAuth .bottom span:first-child {
+  margin-right: 2px;
+}
+.userAuth .bottom .signin {
+  color: green;
+}
+.home-page h2 {
+  margin-bottom: 20px;
+}
+.home-page .carousel {
+  margin-bottom: 40px;
 }
 .detailed-campaign .progress {
   position: relative;
@@ -27,28 +46,872 @@
   background-color: #26a69a;
   transition: width .3s linear;
 }
-.progress {
+.campaign {
+  width: 250px;
+  float: none;
+  margin: 0 auto;
+  margin-bottom: 45px;
+}
+.campaign .progress {
   position: relative;
-  height: 4px;
+  height: 10px;
   display: block;
-  width: 100%;
-  background-color: #acece6;
+  width: 90%;
+  background-color: #daffde;
   border-radius: 2px;
   background-clip: padding-box;
-  margin: 0.5rem 0 1rem 0;
+  margin: auto;
+  margin-top: 10px;
   overflow: hidden;
 }
-.progress .bar {
+.campaign .progress .bar {
   position: absolute;
   background-color: inherit;
   top: 0;
   bottom: 0;
-  background-color: #26a69a;
+  background-color: #52B75F;
   transition: width .3s linear;
 }
-.restrictImageSize img {
-  width: 300px;
-  height: 300px;
+.campaign .campaign-text {
+  margin: 5px;
+}
+.campaign .permissions {
+  padding: 0px;
+  width: 90%;
+  display: block;
+  margin: auto;
+  height: 30px;
+}
+.campaign-form .restrictImageSize img {
+  width: 250px;
+  height: 250px;
   border-radius: 6px;
   border: 1px solid #eee;
+}
+.campaign-form h2 {
+  margin-top: 20px;
+  margin-bottom: 50px;
+}
+.campaign-form h4 {
+  margin-bottom: 5px;
+}
+.campaign-form .vertical-align {
+  display: flex;
+  flex-direction: row;
+}
+.campaign-form .vertical-align .col-sm-8 {
+  display: flex;
+  align-items: center;
+  justify-content: flex-center;
+}
+.campaign-form .input-wrapper {
+  width: 100%;
+  height: 70px;
+  margin-bottom: 25px;
+}
+.campaign-form .input-container {
+  border: 1px solid #e6e6e6;
+  background-color: #fcfbfa;
+}
+.campaign-form .black-container {
+  border: 1px solid black;
+}
+.campaign-form .form-control {
+  border-radius: 0;
+}
+.campaign-form .goal-input {
+  width: 30%;
+}
+.campaign-form .video-input {
+  width: 40%;
+}
+.campaign-form .type-input {
+  width: 40%;
+}
+.campaign-form .date-input {
+  width: 40%;
+}
+.campaign-form .input-description-wrapper {
+  height: 168px;
+  width: 100%;
+}
+.campaign-form .input-zakaat-wrapper {
+  height: 80px;
+}
+.campaign-form .input-image-wrapper {
+  height: 280px;
+}
+.campaign-form .input-type-wrapper {
+  height: 170px;
+}
+.campaign-form ul {
+  list-style-type: circle;
+}
+.campaign-form .zakaat-input {
+  width: 30px;
+  height: 30px;
+}
+.campaign-form .save {
+  float: right;
+  margin-top: 20px;
+  width: 250px;
+  padding: 5px;
+  margin-bottom: 20px;
+}
+.popups .msgPrompt {
+  font-size: 13px;
+  color: #e74c3c;
+  font-family: 'latoRegular';
+  height: 20px;
+}
+.popups .msgPrompt.success {
+  color: #52B75F;
+}
+.popups img {
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+}
+.popups .formrow {
+  font-size: 15px;
+}
+.popups .formrow span {
+  position: absolute;
+  left: 20px;
+  margin-top: 8px;
+  font-size: 15px;
+  color: #e1e1e1;
+}
+.popups input {
+  background-color: #fff;
+  border: none;
+  border-bottom: 1px solid #e6e6e6;
+  height: 35px;
+  padding: 3px;
+  padding-left: 40px;
+  padding-bottom: 8px;
+  width: 100%;
+  color: #4d4d4d;
+  font-family: 'latoLight';
+  margin-bottom: 5px;
+}
+.popups h4 {
+  font-family: 'Helvetica';
+  position: absolute;
+  top: 45px;
+  left: 20px;
+  color: #fff;
+  background-color: rgba(0, 0, 0, 0.8);
+  padding: 4px;
+  padding-bottom: 0px;
+}
+.popups .or {
+  color: #b8b8b8;
+  margin-top: 25px;
+  font-size: 14px;
+  border-top: 1px dashed #dcdcdc;
+}
+.popups .or div {
+  top: -14px;
+  position: relative;
+  background-color: #fff;
+  border-radius: 6px;
+  padding-left: 10px;
+  padding-right: 10px;
+  display: inline-block;
+}
+.popups .forgot {
+  font-family: 'latoRegular';
+  font-size: 13px;
+  padding-top: 10px;
+  color: #000000;
+  display: block;
+}
+.popups .loginMsg {
+  font-size: 13px;
+  margin-top: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+  color: #000000;
+  line-height: 17px;
+}
+.popups .loginMsg a {
+  color: #52B75F;
+}
+@media (max-width: 768px) {
+  .popups .loginMsg {
+    font-family: 'latoRegular';
+    color: #7a7a7a;
+    font-size: 14px;
+    line-height: 19px;
+  }
+  .popups .loginMsg .desktopInviteMessage {
+    display: none;
+  }
+}
+.popups button {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+.popups button.normal {
+  margin-top: 15px;
+}
+.popups .inputForm {
+  padding-left: 10px;
+  padding-right: 10px;
+  width: 100%;
+  margin-top: 30px;
+}
+.popups .imgZoom {
+  width: 300px;
+  height: 300px;
+  border-radius: 3px;
+  margin-bottom: -11px;
+}
+.popups.passwordPopup button {
+  margin-top: 30px;
+}
+.popups.passwordPopup .msg {
+  font-family: 'latoLight';
+  font-size: 14px;
+  color: #000000;
+  line-height: 19px;
+  margin-bottom: 15px;
+}
+.popups.sharePhoto .holder {
+  padding: 10px;
+  padding-bottom: 10px;
+  background-color: #fff;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+  border-bottom: 1px dashed #000000;
+}
+.popups.sharePhoto .holder .kitty {
+  width: 205px;
+  height: 225px;
+  margin: 0px auto;
+  position: relative;
+  margin-top: -60px;
+}
+.popups.sharePhoto .holder .kitty img {
+  width: 100%;
+  height: 100%;
+  margin: 0px auto;
+  margin-right: -25px;
+}
+.popups.sharePhoto.campaign .kitty {
+  width: 185px;
+  height: 180px;
+  margin-top: -10px;
+  margin-left: 30px;
+}
+.popups.sharePhoto h3 {
+  font-size: 16px;
+  margin-top: 20px;
+  font-family: 'latoLight';
+}
+.popups.sharePhoto .text {
+  color: #000000;
+  line-height: 18px;
+  padding: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 15px;
+  font-size: 14px;
+  font-family: 'latoLight';
+}
+.popups.sharePhoto button.fb {
+  background-color: #3b5998;
+  margin-bottom: 10px;
+}
+.popups.sharePhoto button.twitter {
+  background-color: #55acee;
+  margin-bottom: -20px;
+}
+.popups.sharePhoto .content {
+  padding: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+.popups.appsPopup .content {
+  display: inline-block;
+}
+.popups.appsPopup .ios {
+  padding: 5px 10px;
+  padding-right: 5px;
+}
+.popups.appsPopup .ios img {
+  margin-top: 52px;
+}
+.popups.appsPopup .android {
+  padding: 5px 10px;
+  padding-left: 5px;
+}
+.popups.appsPopup img {
+  width: 100%;
+  margin: 10px 0;
+}
+.popups.appsPopup .button {
+  width: 100%;
+  display: inline-block;
+  text-decoration: none;
+  padding: 3px;
+  height: auto;
+  font-size: 14px;
+}
+.popups.appsPopup .button:hover,
+.popups.appsPopup .button:focus {
+  text-decoration: none;
+  color: #fff;
+}
+.popups.share img {
+  width: 100%;
+}
+.popups.share h4 {
+  top: 60px;
+}
+.popups.share .share-states {
+  font-family: 'gothic';
+  position: absolute;
+  top: 67px;
+  padding: 0 20px;
+  font-weight: bold;
+  font-size: 18px;
+  text-align: left;
+}
+.popups.share .share-states .item {
+  cursor: pointer;
+  text-align: left;
+  color: #fff;
+  background-color: rgba(0, 0, 0, 0.8);
+  padding: 5px;
+  padding-bottom: 0px;
+  text-transform: capitalize;
+  display: inline-block;
+  margin-left: -5px;
+  margin-right: 12px;
+}
+.popups.share .share-states .item.active span {
+  border-bottom: 2px solid #52B75F;
+}
+.popups.share .widget-embed {
+  width: 100%;
+  height: 100%;
+  margin: 15px 0;
+}
+.popups.share .content {
+  display: inline-block;
+  width: 100%;
+}
+.popups.share .content.embedded-widget .formrow {
+  margin-top: 10px;
+}
+.popups.share .content .sub-title {
+  font-size: 16px;
+  color: inherit;
+  font-weight: bold;
+  font-family: 'latoLight';
+  text-align: left;
+  padding: 10px 20px 0;
+}
+.popups.share .content .panel {
+  width: 100%;
+  height: 150px;
+  position: relative;
+  padding: 0px;
+  margin: 0px;
+  border: none;
+  border-radius: 0px;
+  border-bottom: 1px dashed #000000;
+}
+.popups.share .content .panel .info {
+  text-align: left;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+  padding-left: 20px;
+  white-space: nowrap;
+  width: 100%;
+}
+.popups.share .content .panel .info > div {
+  display: inline-block;
+  vertical-align: middle;
+}
+.popups.share .content .panel .info .thumb {
+  width: 80px;
+  height: 80px;
+  border-radius: 60px;
+  margin-right: 10px;
+}
+.popups.share .content .panel .info .labels h3:nth-child(2) {
+  color: #34495e;
+}
+.popups.share .content .panel .info .labels h3 {
+  text-align: left;
+  font-size: 16px;
+  margin-bottom: 7px;
+  color: #52B75F;
+  white-space: normal;
+  padding-right: 110px;
+}
+@media (max-width: 768px) {
+  .popups.share .content .panel .info .labels h3 {
+    font-weight: normal;
+    font-family: 'latoLight';
+  }
+}
+.popups.share .content .formrow {
+  padding-left: 20px;
+  padding-right: 20px;
+  margin-top: 25px;
+}
+.popups.share .content .formrow span {
+  color: #34495e;
+}
+.popups.share .content .formrow input {
+  padding-left: 25px;
+}
+.popups.share .content button {
+  width: 90%;
+  margin-top: 25px;
+}
+.popups.share .content button.fb {
+  background-color: #3b5998;
+  margin-bottom: -5px;
+}
+.popups.share .content button.twitter {
+  background-color: #55acee;
+}
+.popups.share .content .thumbPhotpShare {
+  width: 80px;
+  height: 80px;
+  border-radius: 60px;
+  margin-right: 10px;
+}
+.popups.share .content .playlistDelPopup {
+  display: inline-block;
+  font-family: 'latoRegular';
+  font-size: 16px;
+  color: #000000;
+  margin-top: 20px;
+  margin-bottom: -15px;
+  margin-left: 25px;
+  margin-right: 25px;
+}
+.popups.info-popup .content {
+  padding: 15px 10px 10px;
+  font-family: "latoLight";
+  display: inline-block;
+}
+.popups.confirm-popup button {
+  font-size: 15px;
+}
+.popups.downloadapps .msg {
+  padding: 10px 0;
+  font-family: "latoLight";
+}
+.popups.downloadapps a img {
+  width: 130px;
+}
+.popups.downloadapps a.android-badge img {
+  height: 40px;
+}
+.announce .ngdialog-content {
+  width: 70% !important;
+}
+.announce .ngdialog-close {
+  top: 190px !important;
+  left: 83% !important;
+  right: auto !important;
+}
+.announce .announceContainer {
+  padding: 20px;
+  padding-top: 10px;
+}
+.announce .announceContainer .accounceHead {
+  padding-bottom: 10px;
+}
+.announce .announceContainer .accounceHead img,
+.announce .announceContainer .accounceHead .aHead {
+  display: inline-block;
+  vertical-align: middle;
+}
+.announce .announceContainer .accounceHead .aHead {
+  text-align: left;
+  margin-top: -5px;
+  padding-left: 5px;
+  font-family: 'latoLight' !important;
+}
+.announce .announceContainer .accounceHead .aHead div {
+  font-size: 14px;
+}
+.announce .announceContainer .accounceHead .aHead div:nth-child(2) {
+  font-size: 17px;
+  color: #52B75F;
+}
+.announce .announceContainer img {
+  width: 100px;
+  height: 100px;
+}
+.announce .announceContainer a {
+  color: #52B75F;
+}
+.announce .announceContainer p {
+  font-size: 14px;
+  color: #000000;
+  line-height: 18px;
+  padding-top: 10px;
+}
+@media (max-width: 768px) {
+  .announce .ngdialog-content {
+    width: 90% !important;
+  }
+  .announce .announceContainer .accounceHead {
+    text-align: center !important;
+  }
+  .announce .announceContainer .accounceHead * {
+    display: block;
+  }
+  .announce .announceContainer .accounceHead img {
+    margin-bottom: 10px;
+  }
+  .announce .announceContainer .accounceHead .aHead {
+    text-align: center;
+  }
+}
+.vcenter {
+  display: inline-block;
+  vertical-align: middle;
+  float: none;
+}
+@font-face {
+  font-family: 'latoRegular';
+  src: url("../fonts/Lato-Reg.ttf");
+}
+@font-face {
+  font-family: 'latoHair';
+  src: url("../fonts/Lato-Hai.ttf");
+}
+@font-face {
+  font-family: 'latoLight';
+  src: url("../fonts/Lato-Lig.ttf");
+}
+h1,
+h2,
+h3,
+h4,
+h5 {
+  margin: 0px;
+  padding: 0px;
+}
+.nano > .nano-pane > .nano-slider {
+  background: rgba(255, 255, 255, 0.15) !important;
+  border-width: 0px;
+}
+.block {
+  position: fixed;
+  pointer-events: none;
+  left: 900px;
+  border-radius: 50%;
+  width: 25px;
+  z-index: 99999999 !important;
+  height: 25px;
+  margin: 15px 0;
+  color: black;
+  opacity: 0;
+  background-color: #52B75F;
+  border: 2px solid #34495e;
+  text-align: center;
+  padding-top: 1px;
+  font-weight: 600;
+  font-family: 'latoRegular';
+  font-size: 13px;
+}
+body {
+  height: 100%;
+  font-family: 'latoLight';
+  font-size: 16px;
+  color: #000000;
+  font-weight: normal;
+  margin: 0px;
+  padding: 0px;
+}
+.tooltip {
+  top: 0;
+  border-radius: 1px;
+}
+.zopim {
+  z-index: 9000 !important;
+}
+.flipImage {
+  -moz-transform: scaleX(-1);
+  -o-transform: scaleX(-1);
+  -webkit-transform: scaleX(-1);
+  transform: scaleX(-1);
+  filter: FlipH;
+  -ms-filter: "FlipH";
+}
+h1,
+h2,
+h3,
+h4,
+h5 {
+  color: #52B75F;
+  font-family: 'latoHair';
+  font-weight: bold;
+}
+p {
+  font-family: 'latoLight';
+}
+a {
+  color: inherit;
+}
+a:hover {
+  color: inherit;
+}
+.baseFont {
+  font-family: 'latoLight';
+  font-size: 16px;
+  color: #000000;
+  font-weight: normal;
+}
+.center-text {
+  text-align: center;
+}
+.container_fluid {
+  margin: 0px;
+  padding: 0px;
+}
+.master {
+  height: 100%;
+  overflow-x: hidden;
+}
+.main {
+  width: 100%;
+  margin: 0px;
+  padding: 0px;
+  height: 100%;
+  overflow-x: hidden;
+}
+.no-padding {
+  padding: 0px;
+}
+.padding {
+  /*padding-left: @sideBarWidth + @masterPadding;
+	padding-top: @headerHeight+@commonPadding;
+	padding-right: @masterPadding;*/
+}
+.uicontainer {
+  height: 100%;
+  overflow: auto;
+  margin-top: 60px;
+}
+.allowScroll {
+  -webkit-overflow-scrolling: touch;
+}
+.disableScroll {
+  -webkit-overflow-scrolling: none;
+}
+ul {
+  list-style: none;
+}
+*:focus {
+  outline: 0;
+}
+::-webkit-input-placeholder {
+  color: rgba(100, 190, 112, 0.9);
+}
+:-moz-placeholder {
+  /* Firefox 18- */
+  color: rgba(100, 190, 112, 0.9);
+}
+::-moz-placeholder {
+  /* Firefox 19+ */
+  color: rgba(100, 190, 112, 0.9);
+}
+:-ms-input-placeholder {
+  color: rgba(100, 190, 112, 0.9);
+}
+input:focus::-webkit-input-placeholder {
+  color: transparent;
+}
+input:focus:-moz-placeholder {
+  color: transparent;
+}
+/* FF 4-18 */
+input:focus::-moz-placeholder {
+  color: transparent;
+}
+/* FF 19+ */
+input:focus:-ms-input-placeholder {
+  color: transparent;
+}
+/* IE 10+ */
+.cursorMode {
+  cursor: pointer;
+  color: #e74c3c !important;
+}
+@media (max-width: 768px) {
+  .cursorMode {
+    color: inherit !important;
+  }
+}
+@media (max-width: 768px) {
+  .zopim {
+    visibility: hidden;
+  }
+  .zopimShow {
+    visibility: visible;
+  }
+}
+.cursorModeReadMore {
+  cursor: pointer;
+}
+.ngdialog.userAuth.appsPopupWrapper.ngdialog-theme-default .ngdialog-content {
+  width: 375px;
+  padding-bottom: 0px;
+}
+.searchInput input {
+  background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
+  border: 1px solid #34495e;
+  border-radius: 30px;
+  color: #FFFFFF;
+  font-size: 28px;
+  height: 35px;
+  text-align: left;
+  width: 100%;
+  vertical-align: middle;
+  padding-bottom: 2px;
+  font-size: 15px;
+  padding-left: 35px;
+}
+.ngdialog.userAuth.sharePopupWrapper.ngdialog-theme-default .ngdialog-content {
+  width: 350px;
+}
+.iconControl {
+  margin-right: 12px;
+}
+.iconControl > div {
+  display: inline-block;
+  vertical-align: middle;
+  cursor: pointer;
+}
+.iconControl .iconButton {
+  border: 1px solid #e74c3c;
+  margin-right: 3px;
+  border-radius: 20px;
+  text-align: center;
+  width: 20px;
+  height: 20px;
+  font-size: 11px;
+  padding-top: 0.5px;
+}
+.iconControl .iconButton div {
+  width: 100%;
+  text-align: center;
+}
+.div-link {
+  color: inherit;
+}
+.div-link:hover,
+.div-link:focus,
+.div-link:active {
+  text-decoration: none;
+  color: inherit;
+}
+button,
+.button {
+  width: 100%;
+  background-color: #52B75F;
+  border: none;
+  border-radius: 3px;
+  margin-top: 15px;
+  height: 35px;
+  color: #fff;
+  font-family: 'latoLight';
+  padding-top: 3px;
+}
+button.facebook,
+.button.facebook {
+  background-color: #3B5998;
+}
+button:disabled,
+.button:disabled {
+  opacity: 0.5;
+}
+input.ng-invalid.ng-dirty {
+  border-color: #e34f3c;
+}
+media screen and (-webkit-min-device-pixel-ratio:0) select:focus,
+media screen and (-webkit-min-device-pixel-ratio:0) textarea:focus,
+media screen and (-webkit-min-device-pixel-ratio:0) input:focus {
+  font-size: 16px;
+  background: #eee;
+}
+.icon-refresh-animate {
+  -webkit-animation: spin 1s linear infinite;
+  -moz-animation: spin 1s linear infinite;
+  animation: spin 1s linear infinite;
+}
+@-moz-keyframes spin {
+  100% {
+    -moz-transform: rotate(360deg);
+  }
+}
+@-webkit-keyframes spin {
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
+}
+@keyframes spin {
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+body .spinner {
+  margin: auto;
+  width: 40px;
+  height: 40px;
+  vertical-align: middle;
+  position: relative;
+  text-align: center;
+  -webkit-animation: sk-rotate 1s infinite linear;
+  animation: sk-rotate 1s infinite linear;
+}
+body .dot1,
+body .dot2 {
+  width: 60%;
+  height: 60%;
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  background-color: #1abc9c ;
+  border-radius: 100%;
+  -webkit-animation: sk-bounce 1s infinite ease-in-out;
+  animation: sk-bounce 1s infinite ease-in-out;
+}
+body .dot2 {
+  top: auto;
+  bottom: 0;
+  -webkit-animation-delay: -0.5s;
+  animation-delay: -0.5s;
+}
+body .spinnerPosition {
+  margin-top: 100px;
+}
+.browse-campaigns h2 {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.browse-campaigns .selector {
+  width: 300px;
+  margin: auto;
+  margin-bottom: 50px;
+}
+.browse-campaigns .no-result {
+  font-size: 20px;
+  color: grey;
+}
+h2 {
+  margin: 20px;
 }
