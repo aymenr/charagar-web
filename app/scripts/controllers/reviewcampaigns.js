@@ -13,12 +13,14 @@
 
  	function init()
  	{
-
+ 		$scope.campaignsLoaded = false;
  		if(userService.getUserInfo().accessLevel =="admin") {
 
  			campaignService.getAllCampaigns()
  			.then(function(result) {
  				$scope.campaigns = result;
+
+ 				$scope.campaignsLoaded = true;
  			})
 
 

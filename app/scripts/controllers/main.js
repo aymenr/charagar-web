@@ -11,42 +11,25 @@
  .controller('MainCtrl', function ($scope,campaignService) {
 
 
-
-   function init()
-   {
+  $scope.liveCampaignsLoaded = false;
+  $scope.pastCampaignsLoaded = false;
+  function init()
+  {
 
     campaignService.getLiveCampaigns()
     .then(function(result) {
       $scope.liveCampaigns = result;
-
+      $scope.liveCampaignsLoaded = true;
     })
 
     campaignService.getPastCampaigns()
     .then(function(result) {
       $scope.pastCampaigns = result;
+      $scope.pastCampaignsLoaded = true;
     })
 
 
-    $scope.isLoggedIn = false;
   }
-
-
-
-
-  // $scope.openSignup = function()
-  // {
-  //  console.log("SHOULD POPUP");
-  //       // ngDialog.open(
-  //       // {
-  //       //     template: 'views/user/userAuth.html',
-  //       //     controller: 'UserauthCtrl',
-  //       //     className: 'ngdialog-theme-default userAuth',
-  //       //     showClose: true,
-  //       //     closeByEscape: true,
-  //       //     closeByDocument: true
-
-  //       // });
-  //     }
 
   init();
 });

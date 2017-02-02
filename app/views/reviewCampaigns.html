@@ -1,14 +1,5 @@
-<div class="review-campaigns">
-	<h2 class="text-center">All Campaigns</h2>
 
-	<div class="row">
-		<div ng-repeat="campaign in campaigns" >
-			<div class="clearfix" ng-if="$index % 4 == 0"></div>
-			<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 campaign-container">
+<div ng-if="campaignsLoaded">
+ <campaign-display data="campaigns" name="All Campaigns" contributions="false" admin="true" mine="false"> </campaign-display>
 
-				<campaign-directive data="campaign" admin="true" > </campaign-directive>
-
-			</div>
-		</div>
-	</div>
-</div>
+ </div>

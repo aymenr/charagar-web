@@ -11,6 +11,8 @@
  .service('campaignService', function (userService,$http,configConstants) {
  	var apiPrefix = configConstants.apiPrefix;
  	var authorizedApiPrefix = configConstants.authorizedApiPrefix;
+	var adminApiPrefix = configConstants.adminApiPrefix;
+	var userApiPrefix = configConstants.userApiPrefix;
 
  	this.saveCampaign = function(campaign)
  	{
@@ -85,9 +87,9 @@
  	}
 
  	this.getCampaignsForUser = function(userId)
- 	{
+ 	{ 		console.log("USERIDDDDDXXX:",userId);
 
- 		return $http.post(authorizedApiPrefix + 'getCampaignsForUser', userId).then(function(result)
+ 		return $http.post(userApiPrefix + 'getCampaignsForUser', userId).then(function(result)
  		{
 
  			return result.data
@@ -98,7 +100,8 @@
  	this.getContributionsForUser = function(userId)
  	{
 
- 		return $http.post(authorizedApiPrefix + 'getContributionsForUser/', userId).then(function(result)
+
+ 		return $http.post(userApiPrefix + 'getContributionsForUser/', userId).then(function(result)
  		{
 
  			return result.data
@@ -119,11 +122,32 @@
  	this.editCampaign = function(input)
  	{
 
- 		return $http.post(apiPrefix + 'editCampaign/', input).then(function(result)
+ 		return $http.post(adminApiPrefix + 'editCampaign/', input).then(function(result)
  		{
 
  			return result.data
  		});
  	}
+
+ 	this.deleteCampaign = function(input)
+ 	{
+ 		console.log("PARAMZ:",input);
+ 		return $http.post(adminApiPrefix + 'deleteCampaign/', input).then(function(result)
+ 		{
+
+ 			return result.data
+ 		});
+ 	}
+
+ 	 this.requestDeletion = function(input)
+ 	{
+
+ 		return $http.post(userApiPrefix + 'requestDeletion/', input).then(function(result)
+ 		{
+
+ 			return result.data
+ 		});
+ 	}
+
 
  });

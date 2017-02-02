@@ -10,164 +10,164 @@
  angular.module('charagarApp')
  .controller('StartcampaignCtrl', function ($scope,campaignService,userService,ngDialog,$timeout,configConstants,$http,$q) {
 
- 	function init() {
- 		$scope.campaign = {
- 			"creator":"",
- 			"isApproved":false,
- 			"isZakaat":false,
- 			"type": "Individual"
- 		}
+//  	function init() {
+//  		$scope.campaign = {
+//  			"creator":"",
+//  			"isApproved":false,
+//  			"isZakaat":false,
+//  			"type": "Individual"
+//  		}
 
- 		$scope.campaignTypes = ["Individual", "Cause"]
+//  		$scope.campaignTypes = ["Individual", "Cause"]
 
- 		$scope.uploadImages = {
- 			campaignImageFile: null,
- 			campaignImagePath: ""
- 		}
- 		restrictDateInput();
- 		$scope.saveStatus="";
- 	}
-
-
- 	function uploadImage() {
-
- 		var deferred = $q.defer()
- 		$scope.saveStatus ="Uploading...";
-
- 		var input =
- 		$http({
- 			headers: {Authorization: "Client-ID 4c8a0a606234adf"},
- 			url: 'https://api.imgur.com/3/image',
- 			method: 'POST',
- 			data: {image: $scope.uploadImages.campaignImageFile.split(',')[1]}
- 		}).then(function successCallback(response) {
-
- 			$scope.saveStatus ="Done";
-
- 			deferred.resolve(response.data.data.link)
-
- 		}, function errorCallback(err) {
- 			deferred.reject(err);
- 			$scope.saveStatus = "Error! Try Again";
- 		});
- 		return deferred.promise
- 	};
+//  		$scope.uploadImages = {
+//  			campaignImageFile: null,
+//  			campaignImagePath: ""
+//  		}
+//  		restrictDateInput();
+//  		$scope.saveStatus="";
+//  	}
 
 
- 	$scope.saveCampaign = function() {
+//  	function uploadImage() {
 
- 		console.log("XXXXXXXXXX:",userService.getUserInfo());
- 		$scope.campaign.creator = userService.getUserInfo().userId;
- 		$scope.campaign.isApproved = false;
+//  		var deferred = $q.defer()
+//  		$scope.saveStatus ="Uploading...";
 
- 		uploadImage().then(function(imageUrl) {
- 			console.log("image url:",imageUrl);
- 			$scope.campaign.image = imageUrl;
- 			console.log($scope.campaign);
- 			campaignService.saveCampaign(angular.copy($scope.campaign)).then(function(data)
- 			{
+//  		var input =
+//  		$http({
+//  			headers: {Authorization: "Client-ID 4c8a0a606234adf"},
+//  			url: 'https://api.imgur.com/3/image',
+//  			method: 'POST',
+//  			data: {image: $scope.uploadImages.campaignImageFile.split(',')[1]}
+//  		}).then(function successCallback(response) {
 
+//  			$scope.saveStatus ="Done";
 
- 				$timeout(function()
- 				{
- 					init();
- 					ngDialog.open(
- 					{
- 						template: '<div>You campaign has been submitted for approval.</div>',
- 						plain: true
- 					});
- 				}, 500);
+//  			deferred.resolve(response.data.data.link)
 
- 			},
- 			function(errorMessage)
- 			{
- 				$timeout(function()
- 				{
- 					init();
- 					ngDialog.open(
- 					{
- 						template: '<div>Oops! Unable to submit campaign.</div>',
- 						plain: true
- 					});
- 				}, 500);
- 			});
-
- 		});
-
- 	}
+//  		}, function errorCallback(err) {
+//  			deferred.reject(err);
+//  			$scope.saveStatus = "Error! Try Again";
+//  		});
+//  		return deferred.promise
+//  	};
 
 
+//  	$scope.saveCampaign = function() {
 
- 	$scope.isSaveDisabled = function () {
+//  		console.log("XXXXXXXXXX:",userService.getUserInfo());
+//  		$scope.campaign.creator = userService.getUserInfo().userId;
+//  		$scope.campaign.isApproved = false;
 
- 		if(!$scope.uploadImages.campaignImageFile) {
- 			return true;
- 		}
+//  		uploadImage().then(function(imageUrl) {
+//  			console.log("image url:",imageUrl);
+//  			$scope.campaign.image = imageUrl;
+//  			console.log($scope.campaign);
+//  			campaignService.saveCampaign(angular.copy($scope.campaign)).then(function(data)
+//  			{
 
- 		if(	$scope.saveStatus=="Uploading...") {
- 			return true;
- 		}
- 		if ($scope.signup_form.$invalid)
- 		{
- 			return true;
- 		}
- 	}
+
+//  				$timeout(function()
+//  				{
+//  					init();
+//  					ngDialog.open(
+//  					{
+//  						template: '<div>You campaign has been submitted for approval.</div>',
+//  						plain: true
+//  					});
+//  				}, 500);
+
+//  			},
+//  			function(errorMessage)
+//  			{
+//  				$timeout(function()
+//  				{
+//  					init();
+//  					ngDialog.open(
+//  					{
+//  						template: '<div>Oops! Unable to submit campaign.</div>',
+//  						plain: true
+//  					});
+//  				}, 500);
+//  			});
+
+//  		});
+
+//  	}
 
 
 
+//  	$scope.isSaveDisabled = function () {
 
- 	$scope.onImageSelect = function($files, type)
- 	{
- 		var file = $files[0];
- 		$scope.file = file;
- 		var reader = new FileReader();
- 		reader.onload = function(evt)
- 		{
- 			var image = new Image();
- 			image.src = reader.result;
+//  		if(!$scope.uploadImages.campaignImageFile) {
+//  			return true;
+//  		}
 
- 			image.onload = function()
- 			{
-
-
- 				$scope.$apply(function($scope)
- 				{
-
- 					$scope.uploadImages["campaignImageFile"] = evt.target.result;
+//  		if(	$scope.saveStatus=="Uploading...") {
+//  			return true;
+//  		}
+//  		if ($scope.signup_form.$invalid)
+//  		{
+//  			return true;
+//  		}
+//  	}
 
 
- 				});
-
- 			}
- 		};
 
 
- 		reader.readAsDataURL(file);
+//  	$scope.onImageSelect = function($files, type)
+//  	{
+//  		var file = $files[0];
+//  		$scope.file = file;
+//  		var reader = new FileReader();
+//  		reader.onload = function(evt)
+//  		{
+//  			var image = new Image();
+//  			image.src = reader.result;
 
- 	}
-
- 	function restrictDateInput() {
- 		var today = new Date();
- 		var dd = today.getDate();
-		var mm = today.getMonth()+1; //January is 0!
-		var yyyy = today.getFullYear();
-		if(dd<10){
-			dd='0'+dd
-		}
-
-		if(mm<10){
-			mm='0'+mm
-		}
-
-		today = yyyy+'-'+mm+'-'+dd;
-
-		document.getElementById("startdatefield").setAttribute("min", today);
+//  			image.onload = function()
+//  			{
 
 
-		document.getElementById("enddatefield").setAttribute("min", today);
+//  				$scope.$apply(function($scope)
+//  				{
 
-	}
+//  					$scope.uploadImages["campaignImageFile"] = evt.target.result;
 
-init();
+
+//  				});
+
+//  			}
+//  		};
+
+
+//  		reader.readAsDataURL(file);
+
+//  	}
+
+//  	function restrictDateInput() {
+//  		var today = new Date();
+//  		var dd = today.getDate();
+// 		var mm = today.getMonth()+1; //January is 0!
+// 		var yyyy = today.getFullYear();
+// 		if(dd<10){
+// 			dd='0'+dd
+// 		}
+
+// 		if(mm<10){
+// 			mm='0'+mm
+// 		}
+
+// 		today = yyyy+'-'+mm+'-'+dd;
+
+// 		document.getElementById("startdatefield").setAttribute("min", today);
+
+
+// 		document.getElementById("enddatefield").setAttribute("min", today);
+
+// 	}
+
+// init();
 });
 

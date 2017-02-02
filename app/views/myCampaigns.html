@@ -1,13 +1,6 @@
+<div ng-if="campaignsLoaded">
 
-	<h2 class="text-center">My Campaigns</h2>
+ 		<campaign-display data="campaigns" name="My Campaigns" mine="true" contributions="false"> </campaign-display>
 
-	<div class="row">
-		<div ng-repeat="campaign in campaigns" >
-			<div class="clearfix" ng-if="$index % 4 == 0"></div>
-			<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 campaign-container">
 
-				<campaign-directive data="campaign"> </campaign-directive>
-
-			</div>
-		</div>
-	</div>
+</div>

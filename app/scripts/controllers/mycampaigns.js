@@ -7,24 +7,26 @@
  * # MycampaignsCtrl
  * Controller of the charagarApp
  */
-angular.module('charagarApp')
-  .controller('MycampaignsCtrl', function ($scope,userService,campaignService) {
+ angular.module('charagarApp')
+ .controller('MycampaignsCtrl', function ($scope,userService,campaignService) {
 
 
    function init()
    {
- 	var userId = {
- 		"userId":userService.getUserInfo()._id
- 	}
+    $scope.campaignsLoaded = false;
+    var userId = {
+     "userId":userService.getUserInfo().userId
+   }
+   console.log("useSERVICE IFNO:",userService.getUserInfo());
+   campaignService.getCampaignsForUser(userId)
+   .then(function(result) {
+    $scope.campaigns = result;
+    $scope.campaignsLoaded = true;
+  })
 
-    campaignService.getCampaignsForUser(userId)
-    .then(function(result) {
-      $scope.campaigns = result;
-    })
 
+ }
 
-  }
+ init()
 
-  init()
-
-  });
+});

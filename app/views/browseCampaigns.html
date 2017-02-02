@@ -1,17 +1,14 @@
   <div class="browse-campaigns">
-    <h2 class="text-center">All Campaigns</h2>
 
+  <h2 class="text-center"> Browse Campaigns </h2>
     <select class="form-control selector" required ng-change="categoryChanged()" ng-options="item for item in categories" ng-model="selectedCategory" ></select>
 
-    <div class="row">
-      <div ng-repeat="campaign in campaigns" >
-       <div class="clearfix" ng-if="$index % 4 == 0"></div>
-       <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 campaign-container">
 
-        <campaign-directive data="campaign" > </campaign-directive>
-      </div>
+
+    <div ng-if="campaignsLoaded">
+      <campaign-display data="campaigns" name="" contributions="false"> </campaign-display>
     </div>
-  </div>
 
-  <div ng-if="campaigns.length==0" class="no-result">No campaigns in the selected category found. </div>
-</div>
+
+    <div ng-if="campaigns.length==0" class="no-result">No campaigns in the selected category found. </div>
+  </div>

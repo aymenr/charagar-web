@@ -2,18 +2,36 @@
 		<a ng-href="{{getHref()}}">
 			<img src="http://placehold.it/250x250">
 			<div class="baseFont center-text campaign-text"> {{campaignData.name}} </div>
+
+			<div ng-if="contributions=='false'">
 			<div class="progress">
 				<div class="bar" ng-style="{width: percentageRaised}"></div>
 			</div>
 			<div class ="baseFont center-text campaign-text"> {{campaignData.amountRaised}} Raised Of {{campaignData.goal}} Rs </div>
 			<div class ="baseFont center-text campaign-text"  > {{timeLeft}} </div>
+			</div>
+
+			<div  ng-if="contributions=='true'" style="text-align:center"> {{campaignData.contribution.amount}}  Rs Donated </div>
 
 
 		</a>
 
-		<a  ng-if="admin" ng-href="{{getEditHref()}}">
+		<a  ng-if="admin=='true'" ng-href="{{getEditHref()}}">
 		<button  class="btn btn-lg btn-success permissions" role="button">Edit and Approve</button>
 		</a>
+
+		<div class="center-text campaign-text" ng-if="admin=='true' && campaignData.isApproved ==true"><i> Approved</i> </div>
+		<div  class="center-text campaign-text" ng-if="admin=='true' && campaignData.isApproved==false"><i> Not Approved</i> </div>
+
+		<div class="center-text campaign-text" ng-if="admin=='true' && campaignData.requestedDeletion==true"><i> Requested Deletion</i> </div>
+
+
+		<div  ng-if="mine=='true'">
+
+		<button  class="btn btn-lg btn-success permissions" ng-disabled="campaignData.requestedDeletion==true" ng-click="requestDeletion()" role="button">
+		<span ng-if="campaignData.requestedDeletion=='false' || !campaignData.requestedDeletion">Ask For Deletion</span>
+		<span ng-if="campaignData.requestedDeletion==true">Submitted for Deletion</span></button>
+		</div>
 	</div>
 </div>
 

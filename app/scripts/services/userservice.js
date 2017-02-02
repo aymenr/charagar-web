@@ -23,7 +23,7 @@
 
         user.password = hashPassword(user.password)
 
-        console.log("user:",user);
+
         var that = this;
 
         return $http.post(apiPrefix + 'loginUser/', user).then(function(result)
@@ -59,12 +59,14 @@
     }
 
     this.isLoggedIn = function(){
+
             return  $window.sessionStorage.isLoggedIn;
     }
 
 
     this.logoutUser = function()
     {
+
         $window.sessionStorage.isLoggedIn = false;
         $window.sessionStorage.userData =null;
         delete $window.sessionStorage.token;
@@ -108,7 +110,7 @@
         var that = this;
         return $http.get(authorizedApiPrefix+ 'verifyToken').then(function(result)
         {
-            console.log("verified");
+
             return;
         });
     }

@@ -1,20 +1,14 @@
 <div class="detailed-campaign">
-<h1>{{campaign.name}}</h1>
-<div class="row">
-	<div class="col-sm-8">
-	<img src="http://placehold.it/700x400">
-	</div>
-	<div class="col-sm-4">
-		<h3>{{campaign.description}}</h3>
+	<h2 class="center-text">{{campaign.name}}</h2>
+
+	<img src="http://placehold.it/300x300">
+
 
 	<div class="progress">
-	<div class="bar" ng-style="{width: percentageRaised}"></div>
+		<div class="bar" ng-style="{width: percentageRaised}"></div>
 	</div>
-	<div style="text-align:left"> {{campaign.amountRaised}} Raised Of {{campaign.goal}} RS </div>
-	<div ng-if="isLive" style="text-align:left"> {{timeLeft}} Left </div>
+	<h4 class="center-text"> {{campaign.amountRaised}} Raised Of {{campaign.goal}} Rs </h4>
 
+	<div class="center-text description">{{campaign.description}}</div>
 	<button ng-if="isLive" class="btn btn-lg btn-success" href="#" role="button">Donate</button>
-</div>
-
-</div>
 </div>

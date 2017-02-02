@@ -42,29 +42,11 @@
     </a>
   </div>
 
-
-  <h2 class="text-center">Live Campaigns</h2>
-
-
-
-  <div class="row">
-   <div ng-repeat="campaign in liveCampaigns" >
-     <div class="clearfix" ng-if="$index % 4 == 0"></div>
-     <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 campaign-container">
-
-       <campaign-directive data="campaign"  live="true"> </campaign-directive>
-     </div>
-   </div>
+  <div ng-if="liveCampaignsLoaded">
+   <campaign-display name="Live Campaigns" data="liveCampaigns" contributions="false" mine="false"> </campaign-display>
  </div>
 
- <h2 class="text-center">Past Campaigns</h2>
 
- <div class="row">
-   <div ng-repeat="campaign in pastCampaigns" >
-     <div class="clearfix" ng-if="$index % 4 == 0"></div>
-     <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 campaign-container">
-
-       <campaign-directive data="campaign"  live="false"> </campaign-directive>
-     </div>
-   </div>
+  <div ng-if="pastCampaignsLoaded">
+   <campaign-display name="Past Campaigns" data="pastCampaigns" contributions="false" mine="false"> </campaign-display>
  </div>

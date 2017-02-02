@@ -12,12 +12,14 @@
 
  	$scope.categories = ["Health", "Education","All"]
  	$scope.selectedCategory ="All";
-
+ 	 $scope.campaignsLoaded = false;
  	function init()
  	{
  		campaignService.getCampaignsByCategory({})
  		.then(function(result) {
+
  			$scope.campaigns = result;
+ 			$scope.campaignsLoaded  = true;
  		})
 
  	}
@@ -29,10 +31,11 @@
  		if($scope.selectedCategory!="All") {
  			query = {"category": $scope.selectedCategory};
  		}
-
+ 		$scope.campaignsLoaded  = false;
 		campaignService.getCampaignsByCategory(query)
  		.then(function(result) {
  			$scope.campaigns = result;
+ 			$scope.campaignsLoaded  = true;
  		})
 
  	}

@@ -14,7 +14,7 @@
 
         $scope.isLoggedIn = userService.isLoggedIn();
         $scope.userData = userService.getUserInfo();
-        console.log("userdata:",$scope.userData);
+        console.log("userdata:",$scope.userData, " is logged:", $scope.isLoggedIn);
     }
 
     $scope.$watch(userService.isLoggedIn, function(isLoggedIn)

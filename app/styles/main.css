@@ -31,11 +31,13 @@
   position: relative;
   height: 30px;
   display: block;
-  width: 100%;
-  background-color: #acece6;
+  width: 50%;
+  background-color: #daffde;
   border-radius: 2px;
   background-clip: padding-box;
-  margin: 0.5rem 0 1rem 0;
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: 20px;
   overflow: hidden;
 }
 .detailed-campaign .progress .bar {
@@ -43,8 +45,24 @@
   background-color: inherit;
   top: 0;
   bottom: 0;
-  background-color: #26a69a;
+  background-color: #52B75F;
   transition: width .3s linear;
+}
+.detailed-campaign img {
+  margin: 0 auto;
+  display: block;
+  margin-top: 20px;
+}
+.detailed-campaign .description {
+  margin: 15px;
+  padding-left: 100px;
+  padding-right: 100px;
+}
+.detailed-campaign button {
+  width: 25%;
+  margin: 0 auto;
+  display: block;
+  padding: 5px;
 }
 .campaign {
   width: 250px;
@@ -138,6 +156,9 @@
 .campaign-form .input-zakaat-wrapper {
   height: 80px;
 }
+.campaign-form .input-approval-wrapper {
+  height: 50px;
+}
 .campaign-form .input-image-wrapper {
   height: 280px;
 }
@@ -151,12 +172,24 @@
   width: 30px;
   height: 30px;
 }
+.campaign-form .approval-input {
+  width: 30px;
+  height: 30px;
+}
 .campaign-form .save {
   float: right;
   margin-top: 20px;
   width: 250px;
   padding: 5px;
   margin-bottom: 20px;
+}
+.campaign-form .delete {
+  float: right;
+  margin-top: 20px;
+  width: 250px;
+  padding: 5px;
+  margin-bottom: 20px;
+  margin-right: 10px;
 }
 .popups .msgPrompt {
   font-size: 13px;
@@ -914,4 +947,18 @@ body .spinnerPosition {
 }
 h2 {
   margin: 20px;
+}
+.general .left {
+  float: left;
+}
+.general .right {
+  float: right;
+}
+.general .titles {
+  margin: 15px;
+}
+.general img {
+  margin: auto;
+  display: block;
+  margin-top: 20px;
 }

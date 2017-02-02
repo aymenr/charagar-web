@@ -13,13 +13,17 @@
  	function init()
  	{
  		var userId = {
- 			"userId":userService.getUserInfo()._id
+ 			"userId":userService.getUserInfo().userId
  		}
+ 		$scope.contributionsLoaded = false;
+
 
  		campaignService.getContributionsForUser(userId)
  		.then(function(result) {
+
  			$scope.campaigns = result;
- 			console.log($scope.campaigns);
+ 			$scope.contributionsLoaded = true;
+ 			console.log("CONTRIBUTIONS:", $scope.campaigns)
  		})
 
 
