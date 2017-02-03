@@ -20,28 +20,32 @@
  		controller: function ($scope,campaignService,userService,ngDialog,$timeout,configConstants,$http,$q,$state)
  		{
  			function init() {
- 				console.log("IMPORTANT:",$scope.admin);
- 				$scope.admin = $scope.admin;
+
+ 				restrictDateInput();
  				if(!$scope.admin) {
 
  					$scope.campaign = {
  						"creator":"",
  						"isApproved":false,
  						"isZakaat":false,
- 						"type": "Individual"
+ 						"type": "Individual",
+ 						"amountRaised":0
  					}
 
- 					restrictDateInput();
+
 
  				} else {
  					$scope.campaign = $scope.data;
- 					console.log("loookie:",$scope.campaign);
+
  				}
 
  				$scope.campaignTypes = ["Individual", "Cause"]
+ 				$scope.categoryTypes = ["Health", "Education"]
+
 
  				$scope.uploadImages = {
- 					campaignImageFile: null
+ 					campaignImageFile: null,
+ 					croppedImageFile: null
  				}
 
  				$scope.saveStatus="";
@@ -58,7 +62,7 @@
  					headers: {Authorization: "Client-ID 4c8a0a606234adf"},
  					url: 'https://api.imgur.com/3/image',
  					method: 'POST',
- 					data: {image: $scope.uploadImages.campaignImageFile.split(',')[1]}
+ 					data: {image: $scope.uploadImages.croppedImageFile.split(',')[1]}
  				}).then(function successCallback(response) {
 
  					$scope.saveStatus ="Done";
@@ -77,11 +81,12 @@
 
  				$scope.campaign.creator = userService.getUserInfo().userId;
  				$scope.campaign.isApproved = false;
+ 				$scope.campaign.amountRaised = 0;
 
  				uploadImage().then(function(imageUrl) {
- 					console.log("image url:",imageUrl);
+
  					$scope.campaign.image = imageUrl;
- 					console.log($scope.campaign);
+
  					campaignService.saveCampaign(angular.copy($scope.campaign)).then(function(data)
  					{
 
@@ -116,7 +121,7 @@
 
  			$scope.editCampaign = function() {
 
- 				if($scope.uploadImages.campaignImageFile) {
+ 				if($scope.uploadImages.croppedImageFile) {
 
  					uploadImage().then(function(imageUrl) {
  						$scope.campaign.image = imageUrl;
@@ -156,13 +161,13 @@
  					});
 
  				} else {
- 					console.log("ELSE");
+
 
  					var campaign = {
  						"campaignId":$scope.campaign._id,
  						"campaign": $scope.campaign
  					}
- 					console.log("gonna edit this campaign:",campaign);
+
  					campaignService.editCampaign(campaign).then(function(data)
  					{
 
@@ -206,7 +211,7 @@
  					var campaign = {
  						campaignId:$scope.campaign._id
  					}
- 					console.log("campaign:",campaign);
+
  					campaignService.deleteCampaign(campaign).then(function(data)
  					{
 
@@ -246,7 +251,7 @@
 
  			$scope.isSaveDisabled = function () {
 
- 				if(!$scope.uploadImages.campaignImageFile) {
+ 				if(!$scope.uploadImages.croppedImageFile) {
  					return true;
  				}
 
@@ -307,28 +312,48 @@
  			function restrictDateInput() {
  				var today = new Date();
  				var dd = today.getDate();
-		var mm = today.getMonth()+1; //January is 0!
-		var yyyy = today.getFullYear();
-		if(dd<10){
-			dd='0'+dd
-		}
+				var mm = today.getMonth()+1; //January is 0!
+				var yyyy = today.getFullYear();
+				if(dd<10){
+					dd='0'+dd
+				}
 
-		if(mm<10){
-			mm='0'+mm
-		}
+				if(mm<10){
+					mm='0'+mm
+				}
 
-		today = yyyy+'-'+mm+'-'+dd;
+				today = yyyy+'-'+mm+'-'+dd;
 
-		document.getElementById("startdatefield").setAttribute("min", today);
-
-
-		document.getElementById("enddatefield").setAttribute("min", today);
-
-	}
+				document.getElementById("startdatefield").setAttribute("min", today);
 
 
-},
-link: function postLink(scope, element, attrs) {
+				document.getElementById("enddatefield").setAttribute("min", today);
+
+
+
+			}
+			$scope.restrictEndDate = function(){
+				if($scope.campaign.startDate){
+				var startDate = $scope.campaign.startDate;
+ 				var dd = $scope.campaign.startDate.getDate();
+				var mm = $scope.campaign.startDate.getMonth()+1; //January is 0!
+				var yyyy = $scope.campaign.startDate.getFullYear();
+				if(dd<10){
+					dd='0'+dd
+				}
+
+				if(mm<10){
+					mm='0'+mm
+				}
+
+				startDate = yyyy+'-'+mm+'-'+dd;
+
+				document.getElementById("enddatefield").setAttribute("min", startDate);
+				}
+			}
+
+		},
+		link: function postLink(scope, element, attrs) {
         //element.html('this is the campaignDirective directive');
     }
 

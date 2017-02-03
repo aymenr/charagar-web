@@ -25,23 +25,23 @@
 
 
 .vcenter {
-    display: inline-block;
-    vertical-align: middle;
-    float: none;
+	display: inline-block;
+	vertical-align: middle;
+	float: none;
 }
 
 @font-face {
-      font-family: 'latoRegular';
-      src: url("../fonts/Lato-Reg.ttf");
- }
- @font-face {
-      font-family: 'latoHair';
-      src: url("../fonts/Lato-Hai.ttf");
- }
- @font-face {
-      font-family: 'latoLight';
-      src: url("../fonts/Lato-Lig.ttf");
- }
+	font-family: 'latoRegular';
+	src: url("../fonts/Lato-Reg.ttf");
+}
+@font-face {
+	font-family: 'latoHair';
+	src: url("../fonts/Lato-Hai.ttf");
+}
+@font-face {
+	font-family: 'latoLight';
+	src: url("../fonts/Lato-Lig.ttf");
+}
 
 
 
@@ -118,15 +118,15 @@ body
 
 .fontLight()
 {
-	 font-family: 'latoLight';
+	font-family: 'latoLight';
 }
 .fontHair()
 {
-	 font-family: 'latoHair';
+	font-family: 'latoHair';
 }
 .fontRegular()
 {
-	 font-family: 'latoRegular';
+	font-family: 'latoRegular';
 }
 .fontAlternate()
 {
@@ -483,5 +483,63 @@ button:disabled,
 
 		body .spinnerPosition{
 			margin-top: 100px;
+		}
+
+		.cropAreas
+		{
+			& > div
+			{
+				vertical-align: top;
+				display: inline-block;
+			}
+
+			.thumbContainer
+			{
+				div:first-child
+				{
+					margin-top: 15px;
+					font-size: 12px;
+				}
+			}
+		}
+		.cropArea
+		{
+			margin-top: -2px;
+			border-radius: @defaultBorderRadius;
+			background: #E4E4E4;
+			overflow: hidden;
+			display: inline-block;
+			margin-right: 10px;
+			vertical-align: top;
+			&.big
+			{
+				width:250px;
+				height:250px;
+			}
+
+			&.small
+			{
+				width:150px;
+				height:150px;
+			}
+
+		}
+		&.restrictImageSize
+		{
+			img
+			{
+				width: 120px;
+				height: 120px;
+				border-radius: 6px;
+				border: 1px solid #eee;
+			}
+		}
+
+		.video {
+
+			margin: 0 auto;
+			display: block;
+			margin-top: 30px;
+			margin-bottom:30px;
 		}
 

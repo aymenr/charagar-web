@@ -2,14 +2,12 @@
 <div class="detailed-campaign">
 	<h2 class="center-text">{{campaign.name}}</h2>
 
-	<img src="http://placehold.it/300x300">
+	<img ng-show="canLoadVideo==false" src="http://placehold.it/300x300">
+	<div ng-show="canLoadVideo==true" id="videoPlayer"> </div>
 
-
-	<div class="progress">
-		<div class="bar" ng-style="{width: percentageRaised}"></div>
-	</div>
-	<h4 class="center-text"> {{campaign.amountRaised}} Rs raised  </h4>
+	<h4 class="center-text"> {{campaign.amountRaised | number : fractionSize}} Rs raised  </h4>
 
 	<div class="center-text description">{{campaign.description}}</div>
-		<button  class="btn btn-lg btn-success" href="#" role="button">Donate</button>
+
+	<button  class="btn btn-lg btn-success" href="#" role="button">Donate</button>
 </div>

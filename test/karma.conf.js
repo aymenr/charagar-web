@@ -38,6 +38,7 @@ module.exports = function(config) {
       'bower_components/ng-file-upload-shim/ng-file-upload-shim.js',
       'bower_components/ng-imgur/dist/ng-imgur.js',
       'bower_components/angular-http-loader/app/package/js/angular-http-loader.min.js',
+      'bower_components/ng-img-crop/compile/minified/ng-img-crop.js',
       'bower_components/angular-mocks/angular-mocks.js',
       // endbower
       'app/scripts/**/*.js',

@@ -1,13 +1,13 @@
 	<div class="campaign">
 		<a ng-href="{{getHref()}}">
-			<img src="http://placehold.it/250x250">
+			<img ng-src="{{campaignData.image}}">
 			<div class="baseFont center-text campaign-text"> {{campaignData.name}} </div>
 
 			<div ng-if="contributions=='false'">
 			<div class="progress">
-				<div class="bar" ng-style="{width: percentageRaised}"></div>
+				<div class="bar" ng-style="{width: percentageRaised + '%'}"></div>
 			</div>
-			<div class ="baseFont center-text campaign-text"> {{campaignData.amountRaised}} Raised Of {{campaignData.goal}} Rs </div>
+			<div class ="baseFont center-text campaign-text"> {{campaignData.amountRaised | number : fractionSize}} Raised Of {{campaignData.goal | number: fractionSize}} Rs </div>
 			<div class ="baseFont center-text campaign-text"  > {{timeLeft}} </div>
 			</div>
 

@@ -19,9 +19,10 @@
          <li ng-if="isLoggedIn=='false'" ng-click="openSignup()"><a href="#!/">Launch a Campaign</a></li>
          <li><a href="#!/general">Donate to General Fund</a></li>
          <li ng-if="userData.accessLevel=='admin'"><a href="#!/reviewCampaigns">Review Campaigns</a></li>
-         <li><a href="#!/about">How it Works</ng-app="string"></li>
+         <li><a href="#!/about">How it Works</ng-app="string"></a> </li>
        </ul>
        <ul class="nav navbar-nav navbar-right">
+
         <li ng-if="isLoggedIn=='false'" ng-click="openSignup()"><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
 
 

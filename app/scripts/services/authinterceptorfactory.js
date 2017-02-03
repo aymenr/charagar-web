@@ -14,7 +14,7 @@ angular.module('charagarApp')
         return {
             request: function(config)
             {
-                console.log("factory");
+
                 config.headers = config.headers ||
                 {};
                 if ($window.sessionStorage.token)

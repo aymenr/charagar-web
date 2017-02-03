@@ -60,7 +60,13 @@
 
     this.isLoggedIn = function(){
 
+            if(!$window.sessionStorage.isLoggedIn) {
+
+                return "false"
+            } else {
+
             return  $window.sessionStorage.isLoggedIn;
+        }
     }
 
 

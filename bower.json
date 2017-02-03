@@ -20,7 +20,8 @@
     "ng-imgur": "^0.2.1",
     "blueimp-md5": "^2.6.0",
     "font-awesome": "fontawesome#^4.7.0",
-    "angular-http-loader": "^0.1.7"
+    "angular-http-loader": "^0.1.7",
+    "ng-img-crop": "ngImgCrop#^0.3.2"
   },
   "devDependencies": {
     "angular-mocks": "^1.4.0"

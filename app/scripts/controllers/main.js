@@ -19,13 +19,22 @@
     campaignService.getLiveCampaigns()
     .then(function(result) {
       $scope.liveCampaigns = result;
-      $scope.liveCampaignsLoaded = true;
-    })
+
+      if($scope.liveCampaigns.length!=0){
+
+       $scope.liveCampaignsLoaded = true;
+     }
+
+   })
 
     campaignService.getPastCampaigns()
     .then(function(result) {
       $scope.pastCampaigns = result;
-      $scope.pastCampaignsLoaded = true;
+
+      if($scope.pastCampaigns.length!=0){
+        $scope.pastCampaignsLoaded = true;
+      }
+
     })
 
 

@@ -21,7 +21,8 @@
   'ui.router',
   'ngFileUpload',
   'ngImgur',
-  'ng.httpLoader'
+  'ng.httpLoader',
+  'ngImgCrop'
 
   ])
 

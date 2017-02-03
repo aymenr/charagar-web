@@ -21,16 +21,16 @@
         },
         controller: function ($scope)
         {
-            console.log(">>>>>>>>>>>>>>>>>>MINE:",$scope.admin);
+
             $scope.campaignData = $scope.data;
-            console.log("CAMPAIGN DATA:", $scope.campaignData)
+
 
             if($scope.campaignData.name)
                 $scope.campaignData.name = toTitleCase($scope.campaignData.name)
             $scope.percentageRaised = ($scope.campaignData.amountRaised/ $scope.campaignData.goal) *100;
-
+            console.log("percentageRaised:",$scope.percentageRaised);
             if(moment($scope.campaignData.endDate).isBefore(new Date())) {
-                $scope.timeLeft = "Campaign Has Finished";
+
             } else {
 
                $scope.timeLeft = toTitleCase(moment($scope.campaignData.endDate).fromNow(true)) + " Left";

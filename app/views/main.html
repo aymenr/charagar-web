@@ -46,7 +46,10 @@
    <campaign-display name="Live Campaigns" data="liveCampaigns" contributions="false" mine="false"> </campaign-display>
  </div>
 
+ <div ng-if="liveCampaignsLoaded==false">
+  No Campaigns Live Yet
+</div>
 
-  <div ng-if="pastCampaignsLoaded">
-   <campaign-display name="Past Campaigns" data="pastCampaigns" contributions="false" mine="false"> </campaign-display>
- </div>
+<div ng-if="pastCampaignsLoaded">
+ <campaign-display name="Past Campaigns" data="pastCampaigns" contributions="false" mine="false"> </campaign-display>
+</div>
