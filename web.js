@@ -4,4 +4,6 @@ var gzippo = require('gzippo');
 
 
   app.use(gzippo.staticGzip("" + __dirname + "/dist"));
-  app.listen(process.env.PORT || 5000);
+  app.listen(process.env.PORT, function() {
+  	console.log("EXPRESS SERVER LISTENING ON",this.address().port, app.settings.env)
+  });
