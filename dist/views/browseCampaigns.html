@@ -1,0 +1,14 @@
+  <div class="browse-campaigns">
+
+  <h2 class="text-center"> Browse Campaigns </h2>
+    <select class="form-control selector" required ng-change="categoryChanged()" ng-options="item for item in categories" ng-model="selectedCategory" ></select>
+
+
+
+    <div ng-if="campaignsLoaded">
+      <campaign-display data="campaigns" name="" contributions="false"> </campaign-display>
+    </div>
+
+
+    <div ng-if="campaigns.length==0" class="no-result">No campaigns in the selected category found. </div>
+  </div>
