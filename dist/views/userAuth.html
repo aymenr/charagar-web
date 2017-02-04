@@ -1,0 +1,65 @@
+<div class="popups userAuth">
+
+
+	<div ng-if="state.isSignup" class="signup">
+		<form class="inputForm" name="signup_form" novalidate>
+			<div class="formrow">
+				<span class="fa fa-user fa-fw"></span>
+				<input required ng-model="user.name" placeholder="Full Name"></input>
+			</div>
+			<div class="formrow">
+				<span class="fa fa-envelope fa-fw"></span>
+				<input required type="email" ng-model="user.email" placeholder="Email"></input>
+			</div>
+			<div class="formrow">
+				<span class="fa fa-lock fa-fw"></span>
+				<input type="password" required ng-minlength="5" ng-model="user.password" placeholder="Password"></input>
+			</div>
+			<div class ="formrow">
+			<span class="fa fa-phone fa-fw"></span>
+				<input type="tel" required ng-minlength="7" ng-model="user.phone" placeholder="Phone"></input>
+			</div>
+
+			<div class ="formrow">
+			<span class="fa fa-globe fa-fw"></span>
+				<input type="tel" required ng-minlength="7" ng-model="user.country" placeholder="Country"></input>
+			</div>
+
+
+			<button class="normal" ng-disabled="signup_form.$invalid || state.isLoading" ng-click="signupUser()">SIGN UP</button>
+
+		</form>
+		<div class="bottom" ng-click="switchView(false)">
+			<span>Already signed up? Let's </span>
+			<span class="signin">login</span>
+			<span>then.</span>
+		</div>
+	</div>
+	<div ng-if="!state.isSignup" class="login">
+		<form class="inputForm" name="login_form" novalidate>
+
+			<div class="formrow">
+				<span class="fa fa-envelope fa-fw"></span>
+				<input required type="email" ng-model="user.email" placeholder="Email"></input>
+			</div>
+			<div class="formrow">
+				<span class="fa fa-lock fa-fw"></span>
+				<input type="password" required ng-minlength="5" ng-model="user.password" placeholder="Password"></input>
+			</div>
+			<button class="normal" ng-disabled="login_form.$invalid || isLoading" ng-click="loginUser()">LOGIN</button>
+
+
+
+		</form>
+
+		<div class="bottom" ng-click="switchView(true)">
+			<span>Don't have an account? Let's </span>
+			<span class="signin">sign up </span>
+			<span>then.</span>
+		</div>
+	</div>
+	<div class="msgPrompt">
+		<span>{{state.errorMsg}}</span>
+	</div>
+
+</div>

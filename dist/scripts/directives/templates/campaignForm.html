@@ -1,0 +1,183 @@
+<form disabled name="signup_form" >
+
+	<div class="campaign-form">
+		<h2 class="text-center">Start your own campaign</h2>
+		<div class="form-group input-wrapper vertical-align">
+
+			<div class="col-sm-4 col-xs-12">
+				<h4 class=""> Title </h4>
+				<div class=""> What do you want to raise money for? </div>
+
+
+
+
+			</div>
+
+			<div class="col-sm-8 col-xs-12 input-container">
+				<input required ng-model="campaign.name" class="form-control" placeholder="Enter Name">
+			</div>
+		</div>
+
+		<div class="form-group input-wrapper vertical-align">
+
+			<div class="col-sm-4 col-xs-12">
+				<h4 class=""> Goal </h4>
+				<div class=""> How much money do you want to raise? </div>
+				<p> A minimum of 1000 Rs </p>
+			</div>
+
+			<div class="col-sm-8 col-xs-12 input-container">
+				<input required ng-model="campaign.goal" type="number" min="1000" class="form-control goal-input" placeholder="1000"><span> Rs. </span>
+			</div>
+		</div>
+
+
+
+		<div class="form-group input-wrapper vertical-align">
+
+			<div class="col-sm-4 col-xs-12">
+				<h4 class=""> Video (Optional) </h4>
+				<div class=""> Add a youtube or vimeo video link to explain what your campaign is about </div>
+			</div>
+
+			<div class="col-sm-8 col-xs-12 input-container">
+				<input ng-model="campaign.video" class="form-control video-input" placeholder="http://www.youtube.com/watch?v=hm7cgGg-_1s"> </input>
+			</div>
+		</div>
+
+		<div class="form-group input-description-wrapper vertical-align">
+
+			<div class="col-sm-4 col-xs-12">
+				<h4 class=""> Description </h4>
+				<div class=""> Tell us why you are running this fundraiser? </div>
+			</div>
+
+			<div class="col-sm-8 col-xs-12 input-container">
+				<textarea rows="5" ng-model="campaign.description" class="form-control description-input" placeholder=""> </textarea>
+			</div>
+		</div>
+
+
+		<div class="form-group input-type-wrapper vertical-align">
+
+			<div class="col-sm-4 col-xs-12">
+				<h4 class=""> Type </h4>
+				<div class=""> What kind of campaign is it? </div>
+				<ul>
+					<li> An indivual campaign is for your creative, entreprenurial and passion projects</li>
+					<li> A cause is for fundraising for non profit causes</li>
+				</ul>
+			</div>
+
+			<div class="col-sm-8 col-xs-12 input-container">
+				<select class="form-control type-input" ng-options="item for item in campaignTypes" ng-model="campaign.type" ></select>
+			</div>
+		</div>
+
+		<div class="form-group input-wrapper vertical-align">
+
+			<div class="col-sm-4 col-xs-12">
+				<h4 class=""> Category </h4>
+				<div class=""> What category defines your campaign the best? </div>
+
+			</div>
+
+			<div class="col-sm-8 col-xs-12 input-container">
+				<select class="form-control type-input" ng-options="item for item in categoryTypes" ng-model="campaign.category" ></select>
+			</div>
+		</div>
+
+		<div class="form-group input-zakaat-wrapper vertical-align">
+
+			<div class="col-sm-4 col-xs-12">
+				<h4 class=""> Zakaat </h4>
+				<div class=""> Does your camapign qualify as zakaat </div>
+				<p>We take no cut in Zaakat transacations </p>
+			</div>
+
+			<div class="col-sm-8 col-xs-12 input-container">
+				<input class="zakaat-input" type="checkbox"  ng-model="campaign.isZakaat" ></select>
+			</div>
+		</div>
+
+
+		<div class="form-group input-wrapper vertical-align">
+
+			<div class="col-sm-4 col-xs-12">
+				<h4 class=""> Start Date </h4>
+				<div class=""> When do you want your campaign to start? </div>
+
+			</div>
+
+			<div class="col-sm-8 col-xs-12 input-container">
+				<input id="startdatefield" ng-change="restrictEndDate()" type ="date" class="form-control date-input" required ng-model="campaign.startDate" ></input>
+			</div>
+		</div>
+
+
+		<div class="form-group input-wrapper vertical-align">
+
+			<div class="col-sm-4 col-xs-12">
+				<h4 class=""> End Date </h4>
+				<div class=""> When do you want your campaign to end? </div>
+
+			</div>
+
+			<div class="col-sm-8 col-xs-12 input-container">
+				<input ng-change="restrictEndDate()" id="enddatefield" type ="date" class="form-control date-input" required ng-model="campaign.endDate" ></input>
+			</div>
+		</div>
+
+
+		<div class="form-group input-image-wrapper vertical-align">
+
+			<div class="col-sm-4 col-xs-12">
+				<h4 class=""> Upload Image </h4>
+				<div class="">Personalize your fundraise by adding a picture. This picture will represent your campaign on the website.  </div>
+				<button ngf-select="onImageSelect($files,'campaignImages')" accept="image/*"> Select Picture</button>
+			</div>
+
+			<div class="col-sm-8 col-xs-12 input-container">
+
+				<div class="restrictImageSize">
+
+
+					<div ng-if="admin=='true' && !uploadImages.campaignImageFile">
+						<img ng-src="{{campaign.image}}" />
+					</div>
+				</div>
+
+
+ 			    <div ng-if="admin=='false' || uploadImages.campaignImageFile" class="cropArea big">
+                    <img-crop result-image-size="500" area-min-size="300" area-type="square" image="uploadImages.campaignImageFile" result-image="uploadImages.croppedImageFile"></img-crop>
+                </div>
+
+
+
+			</div>
+		</div>
+
+		<div ng-if="admin=='true'" class="form-group input-approval-wrapper vertical-align">
+
+			<div class="col-sm-4 col-xs-12">
+				<h4 class=""> Approve </h4>
+				<div class="">Make this campaign live! </div>
+
+			</div>
+
+			<div class="col-sm-8 col-xs-12 input-container">
+				<input class="approval-input" type="checkbox"  ng-model="campaign.isApproved" ></select>
+			</div>
+		</div>
+
+
+		<h3 class="text-center">{{saveStatus}}<h3>
+			<div ng-http-loader template="../views/loader.html"></div>
+			<button ng-if="admin=='false'" ng-disabled="isSaveDisabled()"  class="btn btn-lg btn-success save" ng-click="saveCampaign()" role="button">Submit For approval</button>
+			<button ng-if="admin=='true'" ng-disabled="isEditDisabled()"  class="btn btn-lg btn-success save" ng-click="editCampaign()" role="button">Edit Campaign</button>
+			<button ng-if="admin=='true'" class="btn btn-lg btn-danger delete" ng-click="deleteCampaign()" role="button">Delete Campaign</button>
+		</div>
+	</div>
+
+
+</form>

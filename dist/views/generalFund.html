@@ -1,0 +1,13 @@
+
+<div class="detailed-campaign">
+	<h2 class="center-text">{{campaign.name}}</h2>
+
+	<img ng-show="canLoadVideo==false" src="http://placehold.it/300x300">
+	<div ng-show="canLoadVideo==true" id="videoPlayer"> </div>
+
+	<h4 class="center-text"> {{campaign.amountRaised | number : fractionSize}} Rs raised  </h4>
+
+	<div class="center-text description">{{campaign.description}}</div>
+
+	<button  class="btn btn-lg btn-success" href="#" role="button">Donate</button>
+</div>

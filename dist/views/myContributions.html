@@ -1,0 +1,14 @@
+
+
+
+<div ng-if="contributionsLoaded && campaigns.length!=0">
+
+	<campaign-display data="campaigns" name="My Contributions" contributions="true"> </campaign-display>
+
+
+</div>
+
+
+<div ng-if="campaigns.length==0">
+	No Contributions Found
+</div>

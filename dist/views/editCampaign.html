@@ -1,0 +1,8 @@
+
+<div ng-if="canAccess && loaded">
+<campaign-form-directive admin="true" data="campaign"> </campaign-form-directive>
+</div>
+
+<div ng-if="!canAccess">
+	You dont have the permissions to view this page.
+</div>
