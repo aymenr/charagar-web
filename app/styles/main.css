@@ -451,6 +451,10 @@ body .spinnerPosition {
 .campaign .campaign-text {
   margin: 5px;
 }
+.campaign .verified {
+  color: #52B75F;
+  font-weight: bold;
+}
 .campaign .permissions {
   padding: 0px;
   width: 90%;
@@ -475,6 +479,13 @@ body .spinnerPosition {
 .campaign-form h4 {
   margin-bottom: 5px;
 }
+.campaign-form .upload-icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  font-size: 30px;
+  transform: translate(-50%, -50%);
+}
 .campaign-form .vertical-align {
   display: flex;
   flex-direction: row;
@@ -498,6 +509,9 @@ body .spinnerPosition {
 }
 .campaign-form .form-control {
   border-radius: 0;
+}
+.campaign-form .image-title-input {
+  width: 50%;
 }
 .campaign-form .goal-input {
   width: 30%;
@@ -556,8 +570,20 @@ body .spinnerPosition {
 .campaign-form .cropArea {
   background: #E4E4E4;
   overflow: hidden;
-  width: 500px;
-  height: 350px;
+  position: relative;
+}
+.campaign-form .select-other-image {
+  width: 200px;
+  height: 34px;
+  margin: 0;
+  margin-left: 200px;
+}
+.campaign-form .add-document-btn {
+  width: 40%;
+}
+.campaign-form .upload-container {
+  cursor: pointer;
+  cursor: hand;
 }
 .popups .msgPrompt {
   font-size: 13px;

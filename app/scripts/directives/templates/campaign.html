@@ -1,7 +1,10 @@
 	<div class="campaign">
 		<a ng-href="{{getHref()}}">
-			<img ng-src="{{campaignData.image}}">
-			<div class="baseFont center-text campaign-text"> {{campaignData.name}} </div>
+			<img ng-src="{{campaignData.campaignImage}}">
+			<div class="baseFont center-text campaign-text"> {{campaignData.name}} 
+			<span class="verified" ng-if="campaignData.isApproved==true"> [Verified] </span>
+			 </div> 
+
 
 			<div ng-if="contributions=='false'">
 			<div class="progress">

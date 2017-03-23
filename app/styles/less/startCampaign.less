@@ -20,6 +20,14 @@ h4 {
 }
 
 
+.upload-icon {
+  position: absolute;
+  top:50%;
+  left:50%;
+  font-size: 30px;
+  transform: translate(-50%, -50%);
+}
+
 .vertical-align {
   display: flex;
   flex-direction: row;
@@ -50,6 +58,9 @@ h4 {
 .form-control {
   border-radius: 0;
   //-webkit-appearance: none;
+}
+.image-title-input {
+  width:50%;
 }
 
 .goal-input {
@@ -127,8 +138,23 @@ ul {
 .cropArea {
     background: #E4E4E4;
     overflow: hidden;
-    width:500px;
-    height:350px;
+    position: relative;
+
+}
+.select-other-image {
+  width: 200px;
+  height: 34px;
+  margin: 0;
+  margin-left: 200px;
+
+}
+.add-document-btn {
+  width:40%
 }
 
+
+.upload-container {
+  cursor:pointer;
+  cursor:hand;
+}
 }

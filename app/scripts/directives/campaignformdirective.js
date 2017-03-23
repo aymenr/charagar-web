@@ -17,7 +17,7 @@
  			admin:"@"
 
  		},
- 		controller: function ($scope,campaignService,userService,ngDialog,$timeout,configConstants,$http,$q,$state)
+ 		controller: function ($scope,campaignService,userService,ngDialog,$timeout,configConstants,$http,$q,$state,$window)
  		{
  			function init() {
 
@@ -44,38 +44,108 @@
 
 
  				$scope.uploadImages = {
- 					campaignImageFile: null,
- 					croppedImageFile: null
- 				}
 
+ 					campaignImage: {
+ 						campaignImageFile:null,
+ 						croppedCampaignImageFile:null,
+ 						campaignImageUrl:null,
+ 					},
+ 					
+ 					userImage: {
+ 						userImageFile:null,
+ 						croppedUserImageFile:null,
+ 						userImageUrl:null,
+ 					},
+ 					
+ 				
+
+ 					otherImages: []
+
+
+ 				}
+ 				
  				$scope.saveStatus="";
  			}
 
  			init();
- 			function uploadImage() {
+
+ 			function uploadImages() {
 
  				var deferred = $q.defer()
  				$scope.saveStatus ="Uploading...";
+ 				var imagesArray =[];
+ 				var userImage = false;
+ 				var counter = 0;
 
- 				var input =
+ 				if($scope.uploadImages.campaignImage.croppedCampaignImageFile)
+ 					imagesArray.push({'image':$scope.uploadImages.campaignImage.croppedCampaignImageFile, 'type':'campaign'});
+ 				
+ 				
+ 				if($scope.uploadImages.userImage.croppedUserImageFile)
+ 					imagesArray.push({'image':$scope.uploadImages.userImage.croppedUserImageFile, 'type':'user'});
+ 					
+ 				
+ 		
+ 				$window.async.forEachSeries(imagesArray, function(imageFile, callback){
+ 					
+ 					uploadImage(imageFile.image).then(function(result) {
+ 						
+ 						if(imageFile.type=="campaign") { //its campaign image
+ 							$scope.uploadImages.campaignImage.campaignImageUrl = result;
+ 						} else if( imageFile.type="user") {
+ 							$scope.uploadImages.userImage.userImageUrl = result;
+ 							
+ 						} else {
+ 							$scope.uploadImages.otherImages.push(result);
+ 						}
+
+ 						counter++;
+ 						console.log("counter:",counter);
+ 						callback();
+
+ 					})
+
+ 				}, function(err){
+
+ 					if(err){
+ 						console.log('ERROR: ', err);
+ 						deferred.reject();
+ 						
+ 					}
+ 					else{
+ 						console.log("ho gaya jani");
+ 						deferred.resolve();
+ 					}
+
+
+ 				});
+
+ 				return deferred.promise;
+ 			};
+
+
+ 			function uploadImage (imageFile) {
+ 				var deferred = $q.defer();
+
  				$http({
  					headers: {Authorization: "Client-ID 4c8a0a606234adf"},
  					url: 'https://api.imgur.com/3/image',
  					method: 'POST',
- 					data: {image: $scope.uploadImages.croppedImageFile.split(',')[1]}
+ 					data: {image: imageFile.split(',')[1]}
  				}).then(function successCallback(response) {
 
- 					$scope.saveStatus ="Done";
+ 						/// yahan kya karna ha?
+ 						console.log("resolving:",response.data.data.link);
+ 						deferred.resolve(response.data.data.link)
 
- 					deferred.resolve(response.data.data.link)
+ 					}, function errorCallback(err) {
 
- 				}, function errorCallback(err) {
- 					deferred.reject(err);
- 					$scope.saveStatus = "Error! Try Again";
- 				});
- 				return deferred.promise
- 			};
+ 						deferred.reject(err);
+ 						$scope.saveStatus = "Error! Try Again";
+ 					});
 
+ 				return deferred.promise;
+ 			}
 
  			$scope.saveCampaign = function() {
 
@@ -83,9 +153,11 @@
  				$scope.campaign.isApproved = false;
  				$scope.campaign.amountRaised = 0;
 
- 				uploadImage().then(function(imageUrl) {
+ 				uploadImages().then(function() {
 
- 					$scope.campaign.image = imageUrl;
+ 					$scope.campaign.campaignImage = $scope.uploadImages.campaignImage.campaignImageUrl;
+					$scope.campaign.userImage = $scope.uploadImages.userImage.userImageUrl;
+					$scope.campaign.otherImages = $scope.uploadImages.otherImages;
 
  					campaignService.saveCampaign(angular.copy($scope.campaign)).then(function(data)
  					{
@@ -121,10 +193,18 @@
 
  			$scope.editCampaign = function() {
 
- 				if($scope.uploadImages.croppedImageFile) {
+ 				if($scope.uploadImages.campaignImage.croppedCampaignImageFile ||$scope.uploadImages.userImage.croppedUserImageFile ) {
 
- 					uploadImage().then(function(imageUrl) {
- 						$scope.campaign.image = imageUrl;
+ 					uploadImages().then(function() {
+
+ 						if($scope.uploadImages.campaignImage.croppedCampaignImageFile)
+ 							$scope.campaign.campaignImage = $scope.uploadImages.campaignImage.campaignImageUrl;
+
+ 						if($scope.uploadImages.userImage.croppedUserImageFile)
+ 							$scope.campaign.userImage = $scope.uploadImages.userImage.userImageUrl;
+
+ 						
+
 
  						var campaign = {
  							"campaignId":$scope.campaign._id,
@@ -251,7 +331,7 @@
 
  			$scope.isSaveDisabled = function () {
 
- 				if(!$scope.uploadImages.croppedImageFile) {
+ 				if(!$scope.uploadImages.campaignImage.croppedCampaignImageFile) {
  					return true;
  				}
 
@@ -283,6 +363,9 @@
  			{
  				var file = $files[0];
  				$scope.file = file;
+
+
+ 		
  				var reader = new FileReader();
  				reader.onload = function(evt)
  				{
@@ -296,7 +379,7 @@
  						$scope.$apply(function($scope)
  						{
 
- 							$scope.uploadImages["campaignImageFile"] = evt.target.result;
+ 							$scope.uploadImages[type][type + "File"] = evt.target.result;
 
 
  						});
@@ -332,10 +415,11 @@
 
 
 			}
+			
 			$scope.restrictEndDate = function(){
 				if($scope.campaign.startDate){
-				var startDate = $scope.campaign.startDate;
- 				var dd = $scope.campaign.startDate.getDate();
+					var startDate = $scope.campaign.startDate;
+					var dd = $scope.campaign.startDate.getDate();
 				var mm = $scope.campaign.startDate.getMonth()+1; //January is 0!
 				var yyyy = $scope.campaign.startDate.getFullYear();
 				if(dd<10){
@@ -349,11 +433,11 @@
 				startDate = yyyy+'-'+mm+'-'+dd;
 
 				document.getElementById("enddatefield").setAttribute("min", startDate);
-				}
 			}
+		}
 
-		},
-		link: function postLink(scope, element, attrs) {
+	},
+	link: function postLink(scope, element, attrs) {
         //element.html('this is the campaignDirective directive');
     }
 
