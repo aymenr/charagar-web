@@ -8,7 +8,7 @@
  * Controller of the charagarApp
  */
  angular.module('charagarApp')
- .controller('DetailedcampaignCtrl', function ($scope,$stateParams,campaignService) {
+ .controller('DetailedcampaignCtrl', function ($scope,$stateParams,campaignService,userService) {
  	var campaignId = $stateParams.campaignId;
  	var videoId ="error";
  	function init()
@@ -41,11 +41,21 @@
  				$scope.canLoadVideo = true;
  				$('#videoPlayer').html('<iframe class="video" width="560" height="315" src="//www.youtube.com/embed/' + videoId + '" frameborder="0" allowfullscreen></iframe>');
  			}
+
+ 			console.log("CAMPAIGN:",$scope.campaign);
+ 			campaignService.getUsername($scope.campaign.creator).then(function(data) {
+ 				
+ 				$scope.campaign.organizer = data[0].name
+ 				
+ 			})
  		},
  		function(errorMessage)
  		{
                     //error handling goes here
                 });
+
+
+
  	}
 
  	function getVideoId(url) {

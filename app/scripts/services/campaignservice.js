@@ -35,6 +35,16 @@
  		});
  	}
 
+ 	 this.getUsername  = function(userId)
+    {
+
+    	var input= {'userId':userId};
+        return $http.post(apiPrefix + 'getUsername', input).then(function(result)
+        {
+
+            return result.data
+        });
+    }
 
  	this.getPastCampaigns = function()
  	{

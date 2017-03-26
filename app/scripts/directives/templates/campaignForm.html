@@ -162,6 +162,8 @@
 			<div class="col-sm-4 col-xs-12">
 				<h4 class=""> Your Photo (Optional)</h4>
 				<div class="">Providing a photo of yourself adds credibility and trust to your fundraiser.  </div>
+
+
 				<button ngf-select="onImageSelect($files,'userImage')" accept="image/*"> Select Picture</button>
 			</div>
 
@@ -185,8 +187,8 @@
 			</div>
 		</div>
 
-				
-		<div class="form-group input-wrapper vertical-align">
+
+		<div class="form-group input-wrapper">
 
 			<div class="col-sm-4 col-xs-12">
 				<h4 class=""> Upload other pictures </h4>
@@ -194,14 +196,45 @@
 				
 			</div>
 
-			<div class="col-sm-8 col-xs-12 input-container">
-				<button class="add-document-btn" ng-click="addDocument()"> Add supporting document</button>
-	
-				<!-- <input required ng-model="uploadImages.tempOtherImage.otherImageTitle" placeholder="Description of your image" class="form-control image-title-input" >
+			<div class="col-sm-8 col-xs-12 input-container supporting" id="supporting-docs">
+
+				<button  ng-if="otherImageUploading==false" class="add-document-btn" ng-click="addDocument()" > Add supporting document</button>
 				
-				<button class="select-other-image" ngf-select="onImageSelect($files,'otherImage')" accept="image/*"> Select Picture</button>
+
+				<div class="add-image-container border" ng-repeat="image in uploadImages.otherImages">
+					
+					<div class="col-sm-2 ">
+						<div ng-if="!image.otherImageFile && !image.otherImageUrl" class="image-thumbnail-placeholder"> 
+
+						</div>	
 				
-				{{}} -->
+						<img ng-if="image.otherImageFile" class="image-thumbnail" ng-src="{{image.otherImageFile}}" />
+						<img ng-if="image.otherImageUrl && !image.otherImageFile" class="image-thumbnail" ng-src="{{image.otherImageUrl}}"/>
+					</div>
+
+					<div class="col-sm-5">
+						<input required ng-model="uploadImages.otherImages[$index].otherImageTitle" placeholder="Image Title" class="form-control image-title-input" > 
+						<div class="uploading-wrapper">
+							<img ng-if="image.isUploading==true" class="image-specefic-spinner" src="../images/spinner.gif">
+
+							<div ng-if="image.otherImageFile" class="image-name" > {{image.otherImageFileName}} <span ng-if="image.isUploading==true" class="theme-color">  uploading </span> </div>
+
+
+						</div>
+					</div>
+
+					<div class="col-sm-5">
+
+						<div class="col-sm-6">
+							<button ng-click="removeDocument($index)" class="btn-danger remove-document-btn"> Remove Picture</button>
+						</div>
+
+						<div class="col-sm-6">
+							<button class="select-other-image" ngf-select="onImageSelect($files,'otherImage{{$index}}')" accept="image/*"> Select Picture</button>
+						</div>
+					</div>
+					
+				</div>
 			</div>
 		</div>
 		
@@ -209,25 +242,26 @@
 
 		<div ng-if="admin=='true'" class="form-group input-approval-wrapper vertical-align">
 
-			<div class="col-sm-4 col-xs-12">
+			<div class="col-sm-4 col-xs-12 approve-title">
 				<h4 class=""> Approve </h4>
 				<div class="">Make this campaign live! </div>
 
 			</div>
 
-			<div class="col-sm-8 col-xs-12 input-container">
+			<div class="col-sm-8 col-xs-12 input-container approve-input-container">
 				<input class="approval-input" type="checkbox"  ng-model="campaign.isApproved" ></select>
 			</div>
 		</div>
 
-
-		<h3 class="text-center">{{saveStatus}}<h3>
-			<div ng-http-loader template="../views/loader.html"></div>
-			<button ng-if="admin=='false'" ng-disabled="isSaveDisabled()"  class="btn btn-lg btn-success save" ng-click="saveCampaign()" role="button">Submit For approval</button>
-			<button ng-if="admin=='true'" ng-disabled="isEditDisabled()"  class="btn btn-lg btn-success save" ng-click="editCampaign()" role="button">Edit Campaign</button>
-			<button ng-if="admin=='true'" class="btn btn-lg btn-danger delete" ng-click="deleteCampaign()" role="button">Delete Campaign</button>
+		<div>
+			<img ng-if="isSaving==true" class="image-specefic-spinner" src="../images/spinner.gif">
+			<h3 class="text-center"> {{saveStatus}}</h3>
 		</div>
+		<button ng-if="admin=='false'" ng-disabled="isSaveDisabled()"  class="btn btn-lg btn-success save" ng-click="saveCampaign()" role="button">Submit For approval</button>
+		<button ng-if="admin=='true'" ng-disabled="isEditDisabled()"  class="btn btn-lg btn-success save" ng-click="editCampaign()" role="button">Edit Campaign</button>
+		<button ng-if="admin=='true'" class="btn btn-lg btn-danger delete" ng-click="deleteCampaign()" role="button">Delete Campaign</button>
 	</div>
+</div>
 
 
 </form>

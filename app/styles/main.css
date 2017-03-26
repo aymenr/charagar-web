@@ -385,6 +385,9 @@ body .spinnerPosition {
 .home-page .carousel {
   margin-bottom: 40px;
 }
+.detailed-campaign {
+  position: relative;
+}
 .detailed-campaign .progress {
   position: relative;
   height: 30px;
@@ -394,7 +397,7 @@ body .spinnerPosition {
   border-radius: 2px;
   background-clip: padding-box;
   margin-right: auto;
-  margin-left: auto;
+  margin-left: 25px;
   margin-top: 20px;
   overflow: hidden;
 }
@@ -406,14 +409,64 @@ body .spinnerPosition {
   background-color: #52B75F;
   transition: width .3s linear;
 }
+.detailed-campaign .title-image {
+  margin-right: -25px;
+  margin-bottom: 20px;
+}
+.detailed-campaign .money-raised {
+  margin-top: 40px;
+  margin-left: 25px;
+  font-weight: bolder;
+  font-size: 25px;
+}
+.detailed-campaign .data-container {
+  border: 1px solid #e6e6e6;
+  background-color: #fcfbfa;
+  margin-bottom: 30px;
+}
+.detailed-campaign .vertical-center-div {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.detailed-campaign .other-image {
+  width: 320px;
+}
+.detailed-campaign .user-container {
+  margin-top: 70px;
+}
+.detailed-campaign .donate-btn {
+  float: left;
+  margin-left: 20px;
+  margin-top: 10px;
+  width: 40%;
+}
+.detailed-campaign .user-image {
+  width: 100px;
+  margin-top: -5px;
+}
+.detailed-campaign .organizer {
+  margin-left: -20px;
+  margin-top: 25px;
+}
+.detailed-campaign .campaign-title {
+  margin-top: 15px;
+  margin-left: 0px;
+  margin-bottom: 10px;
+}
+.detailed-campaign .video-player {
+  vertical-align: middle;
+  float: left;
+  margin-right: 15px;
+}
 .detailed-campaign img {
   margin: 0 auto;
   display: block;
   margin-top: 20px;
 }
 .detailed-campaign .description {
-  margin: 15px;
-  padding-left: 100px;
+  margin-left: 25px;
+  text-align: left;
   padding-right: 100px;
 }
 .detailed-campaign button {
@@ -504,6 +557,9 @@ body .spinnerPosition {
   border: 1px solid #e6e6e6;
   background-color: #fcfbfa;
 }
+.campaign-form .approve-input-container {
+  margin-top: 20px;
+}
 .campaign-form .black-container {
   border: 1px solid black;
 }
@@ -511,7 +567,14 @@ body .spinnerPosition {
   border-radius: 0;
 }
 .campaign-form .image-title-input {
-  width: 50%;
+  width: 107%;
+  margin-bottom: 15px;
+  margin-left: -15px;
+  margin-top: 15px;
+}
+.campaign-form .supporting {
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 .campaign-form .goal-input {
   width: 30%;
@@ -534,6 +597,7 @@ body .spinnerPosition {
 }
 .campaign-form .input-approval-wrapper {
   height: 50px;
+  display: block;
 }
 .campaign-form .input-image-wrapper {
   height: 280px;
@@ -552,12 +616,31 @@ body .spinnerPosition {
   width: 30px;
   height: 30px;
 }
+.campaign-form .approve-title {
+  margin-top: 10px;
+}
 .campaign-form .save {
   float: right;
   margin-top: 20px;
   width: 250px;
   padding: 5px;
   margin-bottom: 20px;
+}
+.campaign-form .image-thumbnail {
+  margin-top: 10px;
+  margin-left: -15px;
+  border-radius: 4px;
+  width: 100px;
+  z-index: 10;
+}
+.campaign-form .image-thumbnail-placeholder {
+  background: #E4E4E4;
+  margin-top: 10px;
+  margin-left: -15px;
+  border-radius: 4px;
+  width: 100px;
+  height: 100px;
+  z-index: 100;
 }
 .campaign-form .delete {
   float: right;
@@ -572,14 +655,48 @@ body .spinnerPosition {
   overflow: hidden;
   position: relative;
 }
-.campaign-form .select-other-image {
-  width: 200px;
+.campaign-form .remove-document-btn {
+  width: 120px;
   height: 34px;
-  margin: 0;
-  margin-left: 200px;
+}
+.campaign-form .image-specefic-spinner {
+  width: 50px;
+  background: transparent;
+  margin: auto;
+  display: inline;
+  margin-left: -20px;
+  margin-right: 15px;
+}
+.campaign-form .select-other-image {
+  width: 120px;
+  height: 34px;
 }
 .campaign-form .add-document-btn {
   width: 40%;
+  margin-top: 0;
+}
+.campaign-form .border {
+  border: #eee;
+  border-width: 0.1px;
+  border-style: solid;
+  margin-top: 10px;
+}
+.campaign-form .add-image-container {
+  margin-bottom: 160px;
+}
+.campaign-form .uploading-wrapper {
+  float: left;
+  clear: both;
+}
+.campaign-form .theme-color {
+  color: #52B75F;
+}
+.campaign-form .upload-text {
+  display: inline;
+}
+.campaign-form .image-name {
+  margin-left: -15px;
+  display: inline;
 }
 .campaign-form .upload-container {
   cursor: pointer;
@@ -1034,4 +1151,10 @@ h2 {
   margin: auto;
   display: block;
   margin-top: 20px;
+}
+.inline {
+  display: inline;
+}
+.themeColor {
+  color: #52B75F;
 }

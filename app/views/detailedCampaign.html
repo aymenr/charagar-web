@@ -1,16 +1,49 @@
 <div class="detailed-campaign">
 	<h2 class="center-text">{{campaign.name}}</h2>
 
+	<div class="data-container col-sm-12">
+		<div class="col-sm-6 ">
+			<img class="title-image" ng-show="canLoadVideo==false" ng-src="{{campaign.campaignImage}}">
+			<div ng-show="canLoadVideo==true" class="video-player" id="videoPlayer"> </div>
+		</div>
 
-		<img ng-show="canLoadVideo==false" ng-src="{{campaign.image}}">
-	<div ng-show="canLoadVideo==true" id="videoPlayer"> </div>
+		<div class="col-sm-6 ">
+			<h4 class="money-raised"> {{campaign.amountRaised | number : fractionSize}} Raised Of {{campaign.goal | number : fractionSize}} Rs </h4>
+			<div class="progress">
+				<div class="bar" ng-style="{width: percentageRaised + '%'}"></div>
+			</div>
 
 
-	<div class="progress">
-		<div class="bar" ng-style="{width: percentageRaised + '%'}"></div>
+			<div class="center-text description">{{campaign.description}}</div>
+			<button ng-if="isLive" class="btn btn-lg btn-success donate-btn" href="#" role="button">Donate</button>
+
+			<div class="user-container">
+				<img class="img-circle user-image col-sm-4" ng-src="{{campaign.userImage}}">
+				<div class='col-sm-8 organizer'>
+					<span class="organizer-text"> <span > Organizer:  </span> <span class="themeColor"> {{campaign.organizer}} </span>
+				</div>
+
+			</div>
+		</div>
+
+
+		
+
 	</div>
-	<h4 class="center-text"> {{campaign.amountRaised | number : fractionSize}} Raised Of {{campaign.goal | number : fractionSize}} Rs </h4>
 
-	<div class="center-text description">{{campaign.description}}</div>
-	<button ng-if="isLive" class="btn btn-lg btn-success" href="#" role="button">Donate</button>
-</div>
+
+	<h3 class="center-text">Supporting Pictures </h3>
+	
+	
+	<div  ng-repeat="image in campaign.otherImages">
+		<div class="col-sm-4">
+			<a ng-href="{{image.otherImageUrl}}">
+		 		<img class="other-image" ng-src="{{image.otherImageUrl}}">
+		 		<div class="center-text"> {{image.otherImageTitle | uppercase}}</div>
+			</a>
+		</div>
+	</div>
+
+
+
+	</div>

@@ -14,6 +14,7 @@
  	var campaignId = $stateParams.campaignId;
  	$scope.canAccess=true;
  	$scope.loaded = false;
+ 	
  	function init() {
 
  		if(userService.getUserPermissions()=="admin"){
@@ -33,8 +34,11 @@
  			$scope.campaign = data[0];
  			$scope.campaign.startDate = new Date($scope.campaign.startDate);
  			$scope.campaign.endDate = new Date($scope.campaign.endDate);
-
+ 			console.log("campaign:",$scope.campaign);
  			$scope.loaded=true;
+
+ 			
+
 
  		},
  		function(errorMessage)
@@ -42,7 +46,8 @@
             //error handling goes here
         });
  	}
-
+ 	
+ 
  	init();
 
  });

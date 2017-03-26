@@ -18,29 +18,11 @@
 
  		},
  		controller: function ($scope,campaignService,userService,ngDialog,$timeout,configConstants,$http,$q,$state,$window)
- 		{
+ 		{	
+ 			$scope.otherImageUploading = false;
  			function init() {
-
+ 				
  				restrictDateInput();
- 				if(!$scope.admin) {
-
- 					$scope.campaign = {
- 						"creator":"",
- 						"isApproved":false,
- 						"isZakaat":false,
- 						"type": "Individual",
- 						"amountRaised":0
- 					}
-
-
-
- 				} else {
- 					$scope.campaign = $scope.data;
-
- 				}
-
- 				$scope.campaignTypes = ["Individual", "Cause"]
- 				$scope.categoryTypes = ["Health", "Education"]
 
 
  				$scope.uploadImages = {
@@ -57,22 +39,62 @@
  						userImageUrl:null,
  					},
  					
- 				
+
 
  					otherImages: []
 
 
  				}
- 				
+
+
+ 				if(!$scope.admin) {
+
+ 					$scope.campaign = {
+ 						"creator":"",
+ 						"isApproved":false,
+ 						"isZakaat":false,
+ 						"type": "Individual",
+ 						"amountRaised":0
+ 					}
+
+
+
+ 				} else {
+
+ 					$scope.campaign = $scope.data;
+
+ 					populateOtherImages()
+
+ 				}
+
+ 				$scope.campaignTypes = ["Individual", "Cause"]
+ 				$scope.categoryTypes = ["Health", "Education"]
+
+
+
  				$scope.saveStatus="";
+ 				$scope.isSaving = false;
  			}
 
  			init();
+ 			
+ 			function populateOtherImages() {
+ 				if($scope.campaign){
+ 				for (var i = 0; i <$scope.campaign.otherImages.length; i++) {
+ 					$scope.campaign.otherImages[i].isUploading = false;
+
+ 					$scope.campaign.otherImages[i].isUploaded = true;
+
+ 					$scope.uploadImages.otherImages.push($scope.campaign.otherImages[i])
+ 				}
+ 			}
+ 			}
 
  			function uploadImages() {
 
  				var deferred = $q.defer()
- 				$scope.saveStatus ="Uploading...";
+ 				$scope.saveStatus ="uploading";
+ 				$scope.isSaving = true;
  				var imagesArray =[];
  				var userImage = false;
  				var counter = 0;
@@ -83,14 +105,14 @@
  				
  				if($scope.uploadImages.userImage.croppedUserImageFile)
  					imagesArray.push({'image':$scope.uploadImages.userImage.croppedUserImageFile, 'type':'user'});
- 					
- 				
- 		
+
+
+
  				$window.async.forEachSeries(imagesArray, function(imageFile, callback){
  					
  					uploadImage(imageFile.image).then(function(result) {
  						
- 						if(imageFile.type=="campaign") { //its campaign image
+ 						if(imageFile.type== "campaign") { //its campaign image
  							$scope.uploadImages.campaignImage.campaignImageUrl = result;
  						} else if( imageFile.type="user") {
  							$scope.uploadImages.userImage.userImageUrl = result;
@@ -147,8 +169,18 @@
  				return deferred.promise;
  			}
 
- 			$scope.saveCampaign = function() {
+ 			$scope.addDocument = function() {
+ 				
+ 				$scope.uploadImages.otherImages.push({otherImageFile:null,otherImageUrl:null,otherImageTitle:null,otherImageFileName:null,isUploading:false,isUploaded:false})
+ 				
+ 			}
 
+ 			$scope.removeDocument = function(indexNumber) {
+ 				$scope.uploadImages.otherImages.splice(indexNumber,1);
+ 			}
+
+ 			$scope.saveCampaign = function() {
+ 				$scope.isSaving = true;
  				$scope.campaign.creator = userService.getUserInfo().userId;
  				$scope.campaign.isApproved = false;
  				$scope.campaign.amountRaised = 0;
@@ -156,13 +188,17 @@
  				uploadImages().then(function() {
 
  					$scope.campaign.campaignImage = $scope.uploadImages.campaignImage.campaignImageUrl;
-					$scope.campaign.userImage = $scope.uploadImages.userImage.userImageUrl;
-					$scope.campaign.otherImages = $scope.uploadImages.otherImages;
+ 					$scope.campaign.userImage = $scope.uploadImages.userImage.userImageUrl;
+
+
+
+ 					removeMetaDataFromOtherImages();
+ 					$scope.campaign.otherImages = $scope.uploadImages.otherImages;
 
  					campaignService.saveCampaign(angular.copy($scope.campaign)).then(function(data)
  					{
 
-
+ 						$scope.isSaving = false;
  						$timeout(function()
  						{
  							init();
@@ -191,6 +227,17 @@
 
  			}
 
+ 			function removeMetaDataFromOtherImages () {  
+ 				for (var i = 0; i <$scope.uploadImages.otherImages.length;i++) {
+ 					
+ 					delete $scope.uploadImages.otherImages[i].otherImageFile;
+ 					delete $scope.uploadImages.otherImages[i].isUploaded;
+ 					delete $scope.uploadImages.otherImages[i].isUploading;
+
+ 					delete $scope.uploadImages.otherImages[i].otherImageFileName;
+ 				}
+ 			}
+
  			$scope.editCampaign = function() {
 
  				if($scope.uploadImages.campaignImage.croppedCampaignImageFile ||$scope.uploadImages.userImage.croppedUserImageFile ) {
@@ -204,12 +251,14 @@
  							$scope.campaign.userImage = $scope.uploadImages.userImage.userImageUrl;
 
  						
-
+ 						removeMetaDataFromOtherImages();
+ 						$scope.campaign.otherImages = $scope.uploadImages.otherImages;
 
  						var campaign = {
  							"campaignId":$scope.campaign._id,
  							"campaign": $scope.campaign
  						}
+
  						campaignService.editCampaign(campaign).then(function(data)
  						{
 
@@ -242,12 +291,14 @@
 
  				} else {
 
+ 					removeMetaDataFromOtherImages();
+ 					$scope.campaign.otherImages = $scope.uploadImages.otherImages;
 
  					var campaign = {
  						"campaignId":$scope.campaign._id,
  						"campaign": $scope.campaign
  					}
-
+ 					
  					campaignService.editCampaign(campaign).then(function(data)
  					{
 
@@ -332,15 +383,29 @@
  			$scope.isSaveDisabled = function () {
 
  				if(!$scope.uploadImages.campaignImage.croppedCampaignImageFile) {
+ 					console.log("a")
  					return true;
  				}
 
- 				if(	$scope.saveStatus=="Uploading...") {
+ 				if(	$scope.saveStatus=="uploading") {
+ 					console.log("b")
  					return true;
  				}
  				if ($scope.signup_form.$invalid)
  				{
+ 					console.log("c")
  					return true;
+ 				}
+
+ 				if($scope.otherImageUploading==true) {
+ 					console.log("d")
+ 					return true;
+ 				}
+
+ 				for(var i = 0; i <$scope.uploadImages.otherImages.length;i++) {
+ 					if($scope.uploadImages.otherImages[i].isUploaded == false) {
+ 						return true;
+ 					}
  				}
  			}
 
@@ -355,17 +420,31 @@
  				{
  					return true;
  				}
+
+
+ 				if($scope.otherImageUploading==true) {
+ 					console.log("d")
+ 					return true;
+ 				}
+
+ 				for(var i = 0; i <$scope.uploadImages.otherImages.length;i++) {
+ 					if($scope.uploadImages.otherImages[i].isUploaded == false) {
+ 						return true;
+ 					}
+ 				}
+
  			}
 
 
 
  			$scope.onImageSelect = function($files, type)
- 			{
+ 			{	
+ 				console.log("KUCH TO HO GAYA");
  				var file = $files[0];
  				$scope.file = file;
 
 
- 		
+
  				var reader = new FileReader();
  				reader.onload = function(evt)
  				{
@@ -379,8 +458,24 @@
  						$scope.$apply(function($scope)
  						{
 
- 							$scope.uploadImages[type][type + "File"] = evt.target.result;
+ 							if(type.indexOf("otherImage") != -1) {
 
+ 								var parsedIndex = parseInt(type.substr(10,type.length));
+ 								
+ 								$scope.uploadImages['otherImages'][parsedIndex].otherImageFileName = $scope.file.name;
+ 								$scope.uploadImages['otherImages'][parsedIndex].otherImageFile = evt.target.result;
+ 								$scope.uploadImages['otherImages'][parsedIndex].isUploading = true;
+ 								$scope.otherImageUploading = true;
+ 								uploadImage($scope.uploadImages['otherImages'][parsedIndex].otherImageFile).then(function(response){
+ 									$scope.otherImageUploading = false;
+ 									$scope.uploadImages['otherImages'][parsedIndex].otherImageUrl = response;
+ 									$scope.uploadImages['otherImages'][parsedIndex].isUploading = false;
+ 									$scope.uploadImages['otherImages'][parsedIndex].isUploaded = true;
+ 								})
+
+ 							} else {
+ 								$scope.uploadImages[type][type + "File"] = evt.target.result;
+ 							}
 
  						});
 
